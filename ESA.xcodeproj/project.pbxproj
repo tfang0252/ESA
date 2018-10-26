@@ -12,6 +12,7 @@
 		C9546CD320F7C934001C9498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD120F7C934001C9498 /* Main.storyboard */; };
 		C9546CD520F7C934001C9498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD420F7C934001C9498 /* Assets.xcassets */; };
 		C9546CD820F7C935001C9498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */; };
+		D0A4AD45218381ED007017FF /* RosterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD44218381ED007017FF /* RosterVC.swift */; };
 		F58F9FB3886F7B77269F290C /* Pods_ESA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D95CFE312D07663FD04A06A1 /* Pods_ESA.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		C9546CD420F7C934001C9498 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9546CD720F7C935001C9498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9546CD920F7C935001C9498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0A4AD44218381ED007017FF /* RosterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterVC.swift; sourceTree = "<group>"; };
 		D95CFE312D07663FD04A06A1 /* Pods_ESA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ESA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 				C9546CD420F7C934001C9498 /* Assets.xcassets */,
 				C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */,
 				C9546CD920F7C935001C9498 /* Info.plist */,
+				D0A4AD44218381ED007017FF /* RosterVC.swift */,
 			);
 			path = ESA;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A4AD45218381ED007017FF /* RosterVC.swift in Sources */,
 				C9546CD020F7C934001C9498 /* LoginVC.swift in Sources */,
 				C9546CCE20F7C934001C9498 /* AppDelegate.swift in Sources */,
 			);
