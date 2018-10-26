@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class RosterViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class RosterViewController: UIViewController {
     @IBOutlet weak var rosterTableView: UITableView!
     @IBOutlet weak var addPlayerButton: UIBarButtonItem!
     
+    var ref: DatabaseReference!
     var playerNames = ["Zach","Tony","Danny"]
     var playerName = ""
     var playerNumber = ""
