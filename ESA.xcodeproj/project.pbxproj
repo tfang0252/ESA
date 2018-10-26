@@ -13,6 +13,7 @@
 		C9546CD520F7C934001C9498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD420F7C934001C9498 /* Assets.xcassets */; };
 		C9546CD820F7C935001C9498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */; };
 		D0A4AD45218381ED007017FF /* RosterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD44218381ED007017FF /* RosterVC.swift */; };
+		D0A4AD492183BB9B007017FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */; };
 		F58F9FB3886F7B77269F290C /* Pods_ESA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D95CFE312D07663FD04A06A1 /* Pods_ESA.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		C9546CD720F7C935001C9498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9546CD920F7C935001C9498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A4AD44218381ED007017FF /* RosterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterVC.swift; sourceTree = "<group>"; };
+		D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D95CFE312D07663FD04A06A1 /* Pods_ESA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ESA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 		C9546CCC20F7C934001C9498 /* ESA */ = {
 			isa = PBXGroup;
 			children = (
+				D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */,
 				C9546CCD20F7C934001C9498 /* AppDelegate.swift */,
 				C9546CCF20F7C934001C9498 /* LoginVC.swift */,
 				C9546CD120F7C934001C9498 /* Main.storyboard */,
@@ -102,6 +105,7 @@
 				C9546CC620F7C934001C9498 /* Sources */,
 				C9546CC720F7C934001C9498 /* Frameworks */,
 				C9546CC820F7C934001C9498 /* Resources */,
+				2D765DB4251057DD25DCBE6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9546CD820F7C935001C9498 /* LaunchScreen.storyboard in Resources */,
+				D0A4AD492183BB9B007017FF /* GoogleService-Info.plist in Resources */,
 				C9546CD520F7C934001C9498 /* Assets.xcassets in Resources */,
 				C9546CD320F7C934001C9498 /* Main.storyboard in Resources */,
 			);
@@ -159,6 +164,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D765DB4251057DD25DCBE6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ESA/Pods-ESA-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ESA/Pods-ESA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6BA0D6BE8D12D90419F1154E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

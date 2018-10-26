@@ -6,5 +6,6 @@ target 'ESA' do
   use_frameworks!
 
   # Pods for ESA
+pod 'Firebase/Core'
 
 end
