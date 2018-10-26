@@ -84,14 +84,14 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ESAlogo" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-hH-Kqn">
-                                <rect key="frame" x="127.5" y="95" width="120" height="140"/>
+                                <rect key="frame" x="122.5" y="95" width="130" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="En9-pm-DBn"/>
-                                    <constraint firstAttribute="width" constant="120" id="G9d-1k-jVi"/>
+                                    <constraint firstAttribute="width" constant="130" id="G9d-1k-jVi"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSx-C7-lvP">
-                                <rect key="frame" x="15" y="631" width="120" height="30"/>
+                                <rect key="frame" x="15" y="625" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="cGr-el-CJN"/>
                                     <constraint firstAttribute="height" constant="30" id="y4v-zA-aGa"/>
@@ -102,7 +102,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRg-PX-XgW">
-                                <rect key="frame" x="240" y="631" width="120" height="30"/>
+                                <rect key="frame" x="240" y="625" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="9M9-wK-2i1"/>
                                     <constraint firstAttribute="height" constant="30" id="e9b-hl-SaM"/>
@@ -118,7 +118,7 @@
                                     <constraint firstAttribute="height" constant="40" id="oRq-Rk-TmH"/>
                                     <constraint firstAttribute="width" constant="250" id="ozT-Sw-GvM"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="GoogleLogin"/>
+                                <state key="normal" title="Button" image="GoogleLogin-1"/>
                             </button>
                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEo-Gk-5yM">
                                 <rect key="frame" x="62.5" y="540.5" width="250" height="40"/>
@@ -146,7 +146,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hBe-DI-xnZ" firstAttribute="trailing" secondItem="LA7-ax-5bL" secondAttribute="trailing" id="1JZ-5y-Sud"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dRg-PX-XgW" secondAttribute="bottom" constant="6" id="1RE-cP-5fr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dRg-PX-XgW" secondAttribute="bottom" constant="12" id="1RE-cP-5fr"/>
                             <constraint firstItem="hBe-DI-xnZ" firstAttribute="centerY" secondItem="LA7-ax-5bL" secondAttribute="centerY" constant="-5.5" id="24N-1S-6Cc"/>
                             <constraint firstItem="zEo-Gk-5yM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DBE-LS-7L0"/>
                             <constraint firstItem="LA7-ax-5bL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HNM-gB-ICl"/>
@@ -161,11 +161,12 @@
                             <constraint firstItem="hBe-DI-xnZ" firstAttribute="leading" secondItem="LA7-ax-5bL" secondAttribute="leading" id="ha8-rk-r6F"/>
                             <constraint firstItem="BDd-hH-Kqn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jb0-Uc-AQF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dRg-PX-XgW" secondAttribute="trailing" constant="15" id="mTd-b0-A2h"/>
+                            <constraint firstItem="dRg-PX-XgW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZSx-C7-lvP" secondAttribute="trailing" constant="8" symbolic="YES" id="rYR-mF-4DJ"/>
                             <constraint firstItem="6jQ-Sl-kNa" firstAttribute="top" secondItem="L0y-hu-11s" secondAttribute="bottom" constant="3" id="sSD-GQ-3hk"/>
                             <constraint firstItem="ZYP-Vg-dCf" firstAttribute="top" secondItem="hBe-DI-xnZ" secondAttribute="bottom" constant="22" id="smh-lw-MQu"/>
                             <constraint firstItem="6jQ-Sl-kNa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vrc-5n-yrG"/>
                             <constraint firstItem="L0y-hu-11s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xRE-Sh-WwI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZSx-C7-lvP" secondAttribute="bottom" constant="6" id="xga-lp-pO3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZSx-C7-lvP" secondAttribute="bottom" constant="12" id="xga-lp-pO3"/>
                             <constraint firstItem="BDd-hH-Kqn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="yW6-5c-R8X"/>
                             <constraint firstItem="hBe-DI-xnZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zbj-mB-xFb"/>
                             <constraint firstItem="Dho-dp-TX7" firstAttribute="top" secondItem="6jQ-Sl-kNa" secondAttribute="bottom" constant="9" id="ziF-pK-RMA"/>
@@ -182,7 +183,7 @@
     <resources>
         <image name="ESAlogo" width="127.5" height="142.5"/>
         <image name="FBLogin" width="374" height="61"/>
-        <image name="GoogleLogin" width="373" height="61"/>
+        <image name="GoogleLogin-1" width="571" height="98"/>
         <image name="LoginBG" width="1125" height="2436"/>
     </resources>
 </document>
