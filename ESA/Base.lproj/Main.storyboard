@@ -182,6 +182,49 @@
             </objects>
             <point key="canvasLocation" x="173.59999999999999" y="26.53673163418291"/>
         </scene>
+        <!--FormationVC-->
+        <scene sceneID="XgE-XA-lhV">
+            <objects>
+                <viewController id="nel-I5-Zqa" customClass="FormationVC" customModule="ESA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9NI-Uh-7yt" customClass="form">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKq-2X-68j">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SoccerField" translatesAutoresizingMaskIntoConstraints="NO" id="Jy0-wm-Qwj">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="600"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="600" id="BrB-j4-dhd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Jy0-wm-Qwj" firstAttribute="top" secondItem="jKq-2X-68j" secondAttribute="top" constant="8" id="6Sf-RC-HCq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jy0-wm-Qwj" secondAttribute="trailing" id="E0f-Xn-zJM"/>
+                                    <constraint firstItem="Jy0-wm-Qwj" firstAttribute="leading" secondItem="jKq-2X-68j" secondAttribute="leading" id="hTH-TD-sXu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jKq-2X-68j" firstAttribute="top" secondItem="Asw-eJ-3SC" secondAttribute="top" id="0Yx-jQ-z5Q"/>
+                            <constraint firstItem="jKq-2X-68j" firstAttribute="trailing" secondItem="Asw-eJ-3SC" secondAttribute="trailing" id="2Rf-6o-6Ts"/>
+                            <constraint firstItem="jKq-2X-68j" firstAttribute="leading" secondItem="Asw-eJ-3SC" secondAttribute="leading" id="CS9-qC-92P"/>
+                            <constraint firstItem="jKq-2X-68j" firstAttribute="bottom" secondItem="Asw-eJ-3SC" secondAttribute="bottom" id="ZHd-zA-SlU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Asw-eJ-3SC"/>
+                    </view>
+                    <connections>
+                        <outlet property="myUIView" destination="jKq-2X-68j" id="cpQ-lM-Jlq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAo-Qe-cNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911.59420289855075" y="793.20652173913049"/>
+        </scene>
         <!--Main MenuVC-->
         <scene sceneID="sR8-Sr-7a4">
             <objects>
@@ -222,6 +265,9 @@
                                             <constraint firstAttribute="height" constant="220.33000000000001" id="TBE-uq-lUr"/>
                                         </constraints>
                                         <state key="normal" image="gameIcon"/>
+                                        <connections>
+                                            <segue destination="nel-I5-Zqa" kind="show" id="7rS-RU-mFL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jde-yr-Jbv">
                                         <rect key="frame" x="0.0" y="440.66666666666657" width="207" height="220.33333333333331"/>
@@ -304,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dln-aw-X8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1133.3333333333335" y="26.086956521739133"/>
+            <point key="canvasLocation" x="814" y="25"/>
         </scene>
         <!--Roster View Controller-->
         <scene sceneID="UqJ-hm-U0J">
@@ -409,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vF-gy-Tgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="27"/>
+            <point key="canvasLocation" x="1474" y="26"/>
         </scene>
     </scenes>
     <resources>
@@ -417,6 +463,7 @@
         <image name="FBLogin" width="374" height="61"/>
         <image name="GoogleLogin-1" width="571" height="98"/>
         <image name="LoginBG" width="1125" height="2436"/>
+        <image name="SoccerField" width="520" height="786"/>
         <image name="calendarIcon" width="51.200000762939453" height="51.200000762939453"/>
         <image name="gameIcon" width="51.200000762939453" height="51.200000762939453"/>
         <image name="navbar" width="769" height="125"/>
@@ -426,7 +473,6 @@
         <image name="statIcon" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rwx-VN-dBc"/>
-        <segue reference="xl2-64-0bz"/>
+        <segue reference="XAp-4P-gic"/>
     </inferredMetricsTieBreakers>
 </document>
