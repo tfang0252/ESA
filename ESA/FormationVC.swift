@@ -27,6 +27,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
         FormationCV.dragInteractionEnabled = true
         ref = Database.database().reference().child("Player")
         
+       
         //When a new player is added to the database, it is observed and then the player model is added to the playerNames array
         ref.observe(DataEventType.value, with: {(snapshot) in
             
@@ -88,7 +89,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     func textToImage(drawText: NSString, inImage: UIImage, atPoint:CGPoint)->UIImage{
         
         // Setup the font specific variables
-        var textColor: UIColor = UIColor.black
+        var textColor: UIColor = UIColor.white
         var textFont: UIFont = UIFont(name: "Helvetica Bold", size: 15)!
         
         //Setup the image context using the passed image.

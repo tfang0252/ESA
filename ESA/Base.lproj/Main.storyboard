@@ -190,11 +190,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zgh-sP-F2M">
-                                <rect key="frame" x="0.0" y="556" width="414" height="180"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="wBi-0I-8Hz">
+                                <rect key="frame" x="0.0" y="436" width="414" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="HLP-fi-nNs"/>
+                                    <constraint firstAttribute="height" constant="300" id="Sd1-sf-Nc2"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zgh-sP-F2M">
+                                <rect key="frame" x="20" y="596" width="374" height="140"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="HLP-fi-nNs"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sct-lL-RXe">
                                     <size key="itemSize" width="64" height="64"/>
@@ -284,19 +290,52 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKW-Kc-ntE">
+                                <rect key="frame" x="20" y="563" width="108" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="V1P-VD-mAA"/>
+                                    <constraint firstAttribute="height" constant="25" id="lZQ-k8-onA"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="undoButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3X-Ff-qHR">
+                                <rect key="frame" x="286" y="563" width="108" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="OgC-h1-QWd"/>
+                                    <constraint firstAttribute="width" constant="108" id="vMj-pg-ZeT"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="saveButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcm-wd-H5q">
+                                <rect key="frame" x="153" y="563" width="108" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="1Zt-Sg-bgF"/>
+                                    <constraint firstAttribute="height" constant="25" id="S6L-oi-Jnd"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="clearButton"/>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jxc-9G-Xbo" firstAttribute="top" secondItem="8K3-Ze-TlR" secondAttribute="bottom" id="2XV-a2-tE4"/>
+                            <constraint firstItem="NAM-aT-38l" firstAttribute="trailing" secondItem="r3X-Ff-qHR" secondAttribute="trailing" constant="20" id="5aZ-O2-DED"/>
                             <constraint firstAttribute="trailing" secondItem="8K3-Ze-TlR" secondAttribute="trailing" id="5d7-Kx-Iqe"/>
                             <constraint firstItem="8K3-Ze-TlR" firstAttribute="leading" secondItem="xjr-ab-03C" secondAttribute="leading" id="78c-17-fmy"/>
+                            <constraint firstItem="NAM-aT-38l" firstAttribute="bottom" secondItem="wBi-0I-8Hz" secondAttribute="bottom" id="AGV-in-EBB"/>
                             <constraint firstItem="8K3-Ze-TlR" firstAttribute="top" secondItem="xjr-ab-03C" secondAttribute="top" id="FqI-Ec-o6C"/>
-                            <constraint firstItem="Zgh-sP-F2M" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" id="Mbp-Yc-Hb3"/>
+                            <constraint firstItem="Zgh-sP-F2M" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" constant="20" id="Mbp-Yc-Hb3"/>
                             <constraint firstItem="jxc-9G-Xbo" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" id="Qpq-Ox-YLt"/>
                             <constraint firstItem="Zgh-sP-F2M" firstAttribute="bottom" secondItem="NAM-aT-38l" secondAttribute="bottom" id="UPl-Pj-EOy"/>
-                            <constraint firstItem="NAM-aT-38l" firstAttribute="trailing" secondItem="Zgh-sP-F2M" secondAttribute="trailing" id="Wx0-bC-Cqk"/>
+                            <constraint firstItem="bcm-wd-H5q" firstAttribute="top" secondItem="jxc-9G-Xbo" secondAttribute="bottom" constant="6" id="Ul2-QG-SJD"/>
+                            <constraint firstItem="NAM-aT-38l" firstAttribute="trailing" secondItem="Zgh-sP-F2M" secondAttribute="trailing" constant="20" id="Wx0-bC-Cqk"/>
                             <constraint firstItem="jxc-9G-Xbo" firstAttribute="trailing" secondItem="NAM-aT-38l" secondAttribute="trailing" id="ZNM-4B-cet"/>
+                            <constraint firstItem="wBi-0I-8Hz" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" id="aO1-dy-DaI"/>
+                            <constraint firstItem="IKW-Kc-ntE" firstAttribute="top" secondItem="jxc-9G-Xbo" secondAttribute="bottom" constant="6" id="gOd-qq-wdi"/>
+                            <constraint firstItem="bcm-wd-H5q" firstAttribute="leading" secondItem="IKW-Kc-ntE" secondAttribute="trailing" constant="25" id="kFv-mV-j3z"/>
+                            <constraint firstItem="NAM-aT-38l" firstAttribute="trailing" secondItem="wBi-0I-8Hz" secondAttribute="trailing" id="lf3-PO-Hd0"/>
+                            <constraint firstItem="r3X-Ff-qHR" firstAttribute="top" secondItem="jxc-9G-Xbo" secondAttribute="bottom" constant="6" id="pQn-Qr-6Yl"/>
                             <constraint firstItem="jxc-9G-Xbo" firstAttribute="top" secondItem="xjr-ab-03C" secondAttribute="top" constant="20" id="teW-tQ-Q1T"/>
+                            <constraint firstItem="IKW-Kc-ntE" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" constant="20" id="xcG-9I-Gc8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NAM-aT-38l"/>
                     </view>
@@ -546,15 +585,19 @@
         <image name="FBLogin" width="374" height="61"/>
         <image name="GoogleLogin-1" width="571" height="98"/>
         <image name="LoginBG" width="1125" height="2436"/>
-        <image name="SoccerField" width="520" height="786"/>
+        <image name="SoccerField" width="544.32000732421875" height="700.32000732421875"/>
+        <image name="bg" width="1242" height="538"/>
         <image name="calendarIcon" width="610" height="649"/>
-        <image name="formation" width="60" height="60"/>
+        <image name="clearButton" width="978" height="245"/>
+        <image name="formation" width="3.9130434989929199" height="3.9130434989929199"/>
         <image name="gameIcon" width="610" height="649"/>
         <image name="navbar" width="1219" height="163"/>
         <image name="photoIcon" width="610" height="649"/>
         <image name="rosterIcon" width="610" height="649"/>
+        <image name="saveButton" width="978" height="245"/>
         <image name="settingsIcon" width="610" height="649"/>
         <image name="statIcon" width="610" height="649"/>
+        <image name="undoButton" width="978" height="245"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xl2-64-0bz"/>
