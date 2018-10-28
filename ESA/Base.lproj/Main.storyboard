@@ -83,7 +83,7 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lBo-eq-qHn" kind="show" id="dGg-no-lYG"/>
+                                    <segue destination="a8l-3v-D2k" kind="show" id="nT4-pc-ub6"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ESAlogo" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-hH-Kqn">
@@ -224,6 +224,89 @@
             </objects>
             <point key="canvasLocation" x="840.79999999999995" y="-623.83808095952031"/>
         </scene>
+        <!--Game Timer View Controller-->
+        <scene sceneID="omJ-uH-IHp">
+            <objects>
+                <viewController id="a8l-3v-D2k" customClass="GameTimerViewController" customModule="ESA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cag-8I-vOI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uY2-Xf-veE">
+                                <rect key="frame" x="166" y="95" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Z7-fd-bLR">
+                                <rect key="frame" x="0.0" y="222" width="375" height="445"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerTimerCell" id="AZ6-c3-rGS" customClass="TimerVCTableViewCell" customModule="ESA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AZ6-c3-rGS" id="T5s-Dt-3F1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-Vx-JQX">
+                                                    <rect key="frame" x="313" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="playerSubbed:" destination="AZ6-c3-rGS" eventType="valueChanged" id="H14-i1-1y5"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5B-vT-NTu">
+                                                    <rect key="frame" x="15" y="11" width="92" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="2Kw-Vx-JQX" secondAttribute="bottom" constant="6.5" id="7hz-6x-3wL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="I5B-vT-NTu" secondAttribute="bottom" constant="1" id="AFv-Rp-Spd"/>
+                                                <constraint firstItem="I5B-vT-NTu" firstAttribute="top" secondItem="T5s-Dt-3F1" secondAttribute="topMargin" id="AZ7-U8-SUO"/>
+                                                <constraint firstItem="2Kw-Vx-JQX" firstAttribute="leading" secondItem="I5B-vT-NTu" secondAttribute="trailing" constant="206" id="HWu-0J-RRi"/>
+                                                <constraint firstAttribute="trailing" secondItem="2Kw-Vx-JQX" secondAttribute="trailing" constant="13" id="bL1-hE-8D4"/>
+                                                <constraint firstItem="I5B-vT-NTu" firstAttribute="leading" secondItem="T5s-Dt-3F1" secondAttribute="leadingMargin" id="dr0-b5-T07"/>
+                                                <constraint firstItem="2Kw-Vx-JQX" firstAttribute="top" secondItem="T5s-Dt-3F1" secondAttribute="top" constant="6" id="v0j-ba-Apu"/>
+                                                <constraint firstItem="2Kw-Vx-JQX" firstAttribute="leading" secondItem="I5B-vT-NTu" secondAttribute="trailing" constant="206" id="vfa-Sd-E6w"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerNameLbl" destination="I5B-vT-NTu" id="5Pf-2Q-1lD"/>
+                                            <outlet property="playerTimeSwitch" destination="2Kw-Vx-JQX" id="LSn-0c-hOO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="a8l-3v-D2k" id="cZ1-wL-8Gc"/>
+                                    <outlet property="delegate" destination="a8l-3v-D2k" id="wbE-eo-Yde"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uY2-Xf-veE" firstAttribute="leading" secondItem="918-Lu-BDp" secondAttribute="leading" constant="166" id="AmG-2D-vNL"/>
+                            <constraint firstItem="uY2-Xf-veE" firstAttribute="top" secondItem="918-Lu-BDp" secondAttribute="top" constant="75" id="GIh-Qy-Rtz"/>
+                            <constraint firstItem="3Z7-fd-bLR" firstAttribute="leading" secondItem="918-Lu-BDp" secondAttribute="leading" id="H94-iv-4IG"/>
+                            <constraint firstItem="918-Lu-BDp" firstAttribute="trailing" secondItem="uY2-Xf-veE" secondAttribute="trailing" constant="167" id="K3l-Zp-cMF"/>
+                            <constraint firstItem="3Z7-fd-bLR" firstAttribute="trailing" secondItem="918-Lu-BDp" secondAttribute="trailing" id="MK4-ED-cKV"/>
+                            <constraint firstItem="3Z7-fd-bLR" firstAttribute="top" secondItem="uY2-Xf-veE" secondAttribute="bottom" constant="106" id="S6e-It-cqh"/>
+                            <constraint firstItem="3Z7-fd-bLR" firstAttribute="top" secondItem="uY2-Xf-veE" secondAttribute="bottom" constant="106" id="T4P-iZ-uxu"/>
+                            <constraint firstItem="3Z7-fd-bLR" firstAttribute="bottom" secondItem="918-Lu-BDp" secondAttribute="bottom" id="VXg-um-D5I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="918-Lu-BDp"/>
+                    </view>
+                    <connections>
+                        <outlet property="gamePlayerTableView" destination="3Z7-fd-bLR" id="lQC-FZ-LmG"/>
+                        <outlet property="timerLbl" destination="uY2-Xf-veE" id="bVg-8s-8tL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mtc-Os-aXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2160.8000000000002" y="-564.46776611694156"/>
+        </scene>
         <!--Roster View Controller-->
         <scene sceneID="UqJ-hm-U0J">
             <objects>
@@ -323,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vF-gy-Tgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="66"/>
+            <point key="canvasLocation" x="2298" y="181"/>
         </scene>
     </scenes>
     <resources>

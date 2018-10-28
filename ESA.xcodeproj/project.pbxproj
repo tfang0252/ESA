@@ -17,6 +17,8 @@
 		D0A4AD492183BB9B007017FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */; };
 		D0A4AD4B2183F5A7007017FF /* RosterVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD4A2183F5A7007017FF /* RosterVCTableViewCell.swift */; };
 		D0A4AD4D2183F659007017FF /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD4C2183F659007017FF /* PlayerModel.swift */; };
+		D0A4AD4F2186715F007017FF /* GameTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD4E2186715F007017FF /* GameTimerVC.swift */; };
+		D0A4AD51218674DA007017FF /* TimerVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD50218674DA007017FF /* TimerVCTableViewCell.swift */; };
 		F58F9FB3886F7B77269F290C /* Pods_ESA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D95CFE312D07663FD04A06A1 /* Pods_ESA.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0A4AD4A2183F5A7007017FF /* RosterVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterVCTableViewCell.swift; sourceTree = "<group>"; };
 		D0A4AD4C2183F659007017FF /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		D0A4AD4E2186715F007017FF /* GameTimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerVC.swift; sourceTree = "<group>"; };
+		D0A4AD50218674DA007017FF /* TimerVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVCTableViewCell.swift; sourceTree = "<group>"; };
 		D95CFE312D07663FD04A06A1 /* Pods_ESA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ESA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,11 +89,13 @@
 				C9546CCF20F7C934001C9498 /* LoginVC.swift */,
 				C9EF52412183DD120006D2F8 /* MainMenuVC.swift */,
 				C9546CD120F7C934001C9498 /* Main.storyboard */,
+				D0A4AD4E2186715F007017FF /* GameTimerVC.swift */,
 				D0A4AD4C2183F659007017FF /* PlayerModel.swift */,
 				C9546CD420F7C934001C9498 /* Assets.xcassets */,
 				C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */,
 				C9546CD920F7C935001C9498 /* Info.plist */,
 				D0A4AD44218381ED007017FF /* RosterVC.swift */,
+				D0A4AD50218674DA007017FF /* TimerVCTableViewCell.swift */,
 			);
 			path = ESA;
 			sourceTree = "<group>";
@@ -220,7 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A4AD4F2186715F007017FF /* GameTimerVC.swift in Sources */,
 				D0A4AD4D2183F659007017FF /* PlayerModel.swift in Sources */,
+				D0A4AD51218674DA007017FF /* TimerVCTableViewCell.swift in Sources */,
 				D0A4AD45218381ED007017FF /* RosterVC.swift in Sources */,
 				D0A4AD4B2183F5A7007017FF /* RosterVCTableViewCell.swift in Sources */,
 				C9546CD020F7C934001C9498 /* LoginVC.swift in Sources */,

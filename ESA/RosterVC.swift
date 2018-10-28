@@ -24,7 +24,7 @@ class RosterViewController: UIViewController {
     var playerNumber = ""
     
     //Search Criteria for the search bar
-    var searchCriteria = [String]()
+    var searchCriteria = [PlayerModel]()
     
     //Will change if the user is searching by name
     var searching = false
@@ -94,7 +94,7 @@ extension RosterViewController: UITableViewDataSource, UITableViewDelegate {
         
         if searching {
             //NEEDS UPDATED
-            cell.playerNameLbl.text = searchCriteria[indexPath.row]
+            //cell.playerNameLbl.text = searchCriteria[indexPath.row]
         }else {
             cell.playerNameLbl.text = players.PlayerName
             cell.playerNumberLbl.text = players.PlayerNumber
@@ -118,6 +118,7 @@ extension RosterViewController: UISearchBarDelegate {
     //Searches the players names as the user types in letters
     //Displays the results after each letter
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
 //        searchCriteria = playerNames.filter({$0.prefix(searchText.count) == searchText})
         
         searching = true
