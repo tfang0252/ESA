@@ -136,10 +136,38 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         
         players = playerNames[indexPath.item]
         
-        cell.playerImage.image = textToImage(drawText: players.PlayerName! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 12, y: 18))
+        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 20))
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
+        cell.playerLabel.text = players.PlayerName!
+        cell.playerLabel.layer.borderColor = UIColor(red:0.24, green:0.52, blue:0.84, alpha:1.0).cgColor
+        cell.playerLabel.layer.borderWidth = 3.0;
+        cell.playerLabel.layer.masksToBounds = true
+        cell.playerLabel.layer.cornerRadius = 5
         
         
+        let image = UIImage.imageWithLabel(cell.playerLabel!)
+        cell.labelImage.image = image
+        
+        
+        
+        var size = CGSize(width: 64, height: 64)
+        UIGraphicsBeginImageContext(size)
+        
+        let playerImageSize = CGRect(x: 8, y: 0, width: 50, height: 50)
+        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
+        cell.playerImage.image!.draw(in: playerImageSize)
+        
+        cell.labelImage.image!.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
+        
+        var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+       
+        cell.labelImage.isHidden = true
+        cell.playerImage.isHidden = true
+        cell.playerLabel.removeFromSuperview()
+        
+        cell.finalImage.image = newImage
         return cell
     }
 }
@@ -151,17 +179,55 @@ extension FormationVC: UICollectionViewDragDelegate{
         let players: PlayerModel
         players = playerNames[indexPath.item]
         
-        cell.playerImage.image = textToImage(drawText: players.PlayerName! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 12, y: 18))
+        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 20))
+        //cell.playerButton.setTitle(players.PlayerName, for: .normal)
+        cell.playerLabel.text = players.PlayerName!
+        cell.playerLabel.layer.borderColor = UIColor(red:0.24, green:0.52, blue:0.84, alpha:1.0).cgColor
+        cell.playerLabel.layer.borderWidth = 3.0;
+        cell.playerLabel.layer.masksToBounds = true
+        cell.playerLabel.layer.cornerRadius = 5
         
-        guard let image = cell.playerImage.image else { return [] }
+        
+        let image = UIImage.imageWithLabel(cell.playerLabel!)
+        cell.labelImage.image = image
+        
+        
+        
+        var size = CGSize(width: 64, height: 64)
+        UIGraphicsBeginImageContext(size)
+        
+        let playerImageSize = CGRect(x: 8, y: 0, width: 50, height: 50)
+        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
+        cell.playerImage.image!.draw(in: playerImageSize)
+        
+        cell.labelImage.image!.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
+        
+        var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        
+        cell.labelImage.isHidden = true
+        cell.playerImage.isHidden = true
+        cell.playerLabel.removeFromSuperview()
+        
+        cell.finalImage.image = newImage
+        
+        guard let final = cell.finalImage.image else { return [] }
 
-        let itemProvider = NSItemProvider(object: image)
+        let itemProvider = NSItemProvider(object: final)
         let dragPlayer = UIDragItem(itemProvider: itemProvider)
-        dragPlayer.localObject = image
+        dragPlayer.localObject = final
         return [dragPlayer]
     }
 }
 
-
+extension UIImage {
+    class func imageWithLabel(_ label: UILabel) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
+        defer { UIGraphicsEndImageContext() }
+        label.layer.render(in: UIGraphicsGetCurrentContext()!)
+        return UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+    }
+}
 
 

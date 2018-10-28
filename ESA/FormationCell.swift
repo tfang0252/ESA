@@ -9,7 +9,10 @@
 import UIKit
 
 class FormationCell: UICollectionViewCell {
+    @IBOutlet weak var finalImage: UIImageView!
+    @IBOutlet weak var playerLabel: UILabel!
     
+    @IBOutlet weak var labelImage: UIImageView!
     @IBOutlet weak var playerImage: UIImageView!
     @IBOutlet weak var playerButton: UIButton!
 }
