@@ -192,7 +192,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zgh-sP-F2M">
                                 <rect key="frame" x="0.0" y="556" width="414" height="180"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="HLP-fi-nNs"/>
                                 </constraints>
@@ -219,6 +219,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="formation" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-GY-iJF">
                                                     <rect key="frame" x="7" y="0.0" width="50" height="50"/>
@@ -272,20 +275,28 @@
                                 </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SoccerField" translatesAutoresizingMaskIntoConstraints="NO" id="jxc-9G-Xbo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="557"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="537"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="557" id="5dY-Kj-Rdm"/>
+                                    <constraint firstAttribute="height" constant="537" id="5dY-Kj-Rdm"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8K3-Ze-TlR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jxc-9G-Xbo" firstAttribute="top" secondItem="8K3-Ze-TlR" secondAttribute="bottom" id="2XV-a2-tE4"/>
+                            <constraint firstAttribute="trailing" secondItem="8K3-Ze-TlR" secondAttribute="trailing" id="5d7-Kx-Iqe"/>
+                            <constraint firstItem="8K3-Ze-TlR" firstAttribute="leading" secondItem="xjr-ab-03C" secondAttribute="leading" id="78c-17-fmy"/>
+                            <constraint firstItem="8K3-Ze-TlR" firstAttribute="top" secondItem="xjr-ab-03C" secondAttribute="top" id="FqI-Ec-o6C"/>
                             <constraint firstItem="Zgh-sP-F2M" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" id="Mbp-Yc-Hb3"/>
                             <constraint firstItem="jxc-9G-Xbo" firstAttribute="leading" secondItem="NAM-aT-38l" secondAttribute="leading" id="Qpq-Ox-YLt"/>
                             <constraint firstItem="Zgh-sP-F2M" firstAttribute="bottom" secondItem="NAM-aT-38l" secondAttribute="bottom" id="UPl-Pj-EOy"/>
                             <constraint firstItem="NAM-aT-38l" firstAttribute="trailing" secondItem="Zgh-sP-F2M" secondAttribute="trailing" id="Wx0-bC-Cqk"/>
                             <constraint firstItem="jxc-9G-Xbo" firstAttribute="trailing" secondItem="NAM-aT-38l" secondAttribute="trailing" id="ZNM-4B-cet"/>
-                            <constraint firstItem="jxc-9G-Xbo" firstAttribute="top" secondItem="xjr-ab-03C" secondAttribute="top" id="teW-tQ-Q1T"/>
+                            <constraint firstItem="jxc-9G-Xbo" firstAttribute="top" secondItem="xjr-ab-03C" secondAttribute="top" constant="20" id="teW-tQ-Q1T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NAM-aT-38l"/>
                     </view>
@@ -309,7 +320,7 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="55"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar" translatesAutoresizingMaskIntoConstraints="NO" id="Su6-Zy-mvb">
-                                        <rect key="frame" x="67" y="0.0" width="279" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="Urz-yr-dtS"/>
@@ -319,11 +330,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="04e-mw-nlq"/>
-                                    <constraint firstItem="Su6-Zy-mvb" firstAttribute="leading" secondItem="s4U-89-Lju" secondAttribute="leading" constant="67" id="Nip-lj-IVk"/>
-                                    <constraint firstAttribute="trailing" secondItem="Su6-Zy-mvb" secondAttribute="trailing" constant="68" id="ZkU-KU-BnW"/>
+                                    <constraint firstItem="Su6-Zy-mvb" firstAttribute="leading" secondItem="s4U-89-Lju" secondAttribute="leading" id="Nip-lj-IVk"/>
+                                    <constraint firstAttribute="trailing" secondItem="Su6-Zy-mvb" secondAttribute="trailing" id="ZkU-KU-BnW"/>
                                     <constraint firstItem="Su6-Zy-mvb" firstAttribute="top" secondItem="s4U-89-Lju" secondAttribute="top" id="ahN-gk-K4G"/>
-                                    <constraint firstAttribute="trailing" secondItem="Su6-Zy-mvb" secondAttribute="trailing" constant="68" id="c3T-hq-puJ"/>
-                                    <constraint firstItem="Su6-Zy-mvb" firstAttribute="leading" secondItem="s4U-89-Lju" secondAttribute="leading" constant="67" id="yZj-Ah-3fh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Su6-Zy-mvb" secondAttribute="trailing" id="c3T-hq-puJ"/>
+                                    <constraint firstItem="Su6-Zy-mvb" firstAttribute="leading" secondItem="s4U-89-Lju" secondAttribute="leading" id="yZj-Ah-3fh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUA-fW-2bE">
@@ -422,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dln-aw-X8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="25"/>
+            <point key="canvasLocation" x="813.04347826086962" y="24.456521739130437"/>
         </scene>
         <!--Roster View Controller-->
         <scene sceneID="UqJ-hm-U0J">
@@ -527,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vF-gy-Tgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2009" y="26"/>
+            <point key="canvasLocation" x="2008.6956521739132" y="25.271739130434785"/>
         </scene>
     </scenes>
     <resources>
@@ -536,14 +547,14 @@
         <image name="GoogleLogin-1" width="571" height="98"/>
         <image name="LoginBG" width="1125" height="2436"/>
         <image name="SoccerField" width="520" height="786"/>
-        <image name="calendarIcon" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="calendarIcon" width="610" height="649"/>
         <image name="formation" width="60" height="60"/>
-        <image name="gameIcon" width="51.200000762939453" height="51.200000762939453"/>
-        <image name="navbar" width="769" height="125"/>
-        <image name="photoIcon" width="51.200000762939453" height="51.200000762939453"/>
-        <image name="rosterIcon" width="51.200000762939453" height="51.200000762939453"/>
-        <image name="settingsIcon" width="51.200000762939453" height="51.200000762939453"/>
-        <image name="statIcon" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="gameIcon" width="610" height="649"/>
+        <image name="navbar" width="1219" height="163"/>
+        <image name="photoIcon" width="610" height="649"/>
+        <image name="rosterIcon" width="610" height="649"/>
+        <image name="settingsIcon" width="610" height="649"/>
+        <image name="statIcon" width="610" height="649"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xl2-64-0bz"/>

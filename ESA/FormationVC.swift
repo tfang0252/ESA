@@ -139,10 +139,10 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 20))
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerName!
-        cell.playerLabel.layer.borderColor = UIColor(red:0.24, green:0.52, blue:0.84, alpha:1.0).cgColor
-        cell.playerLabel.layer.borderWidth = 3.0;
+        cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
+        cell.playerLabel.layer.borderWidth = 2.0;
         cell.playerLabel.layer.masksToBounds = true
-        cell.playerLabel.layer.cornerRadius = 5
+        cell.playerLabel.layer.cornerRadius = 3
         
         
         let image = UIImage.imageWithLabel(cell.playerLabel!)
@@ -153,7 +153,7 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         var size = CGSize(width: 64, height: 64)
         UIGraphicsBeginImageContext(size)
         
-        let playerImageSize = CGRect(x: 8, y: 0, width: 50, height: 50)
+        let playerImageSize = CGRect(x: 8, y: 2, width: 50, height: 50)
         let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
         cell.playerImage.image!.draw(in: playerImageSize)
         
@@ -182,10 +182,10 @@ extension FormationVC: UICollectionViewDragDelegate{
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 20))
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerName!
-        cell.playerLabel.layer.borderColor = UIColor(red:0.24, green:0.52, blue:0.84, alpha:1.0).cgColor
-        cell.playerLabel.layer.borderWidth = 3.0;
+        cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
+        cell.playerLabel.layer.borderWidth = 2.0;
         cell.playerLabel.layer.masksToBounds = true
-        cell.playerLabel.layer.cornerRadius = 5
+        cell.playerLabel.layer.cornerRadius = 3
         
         
         let image = UIImage.imageWithLabel(cell.playerLabel!)
