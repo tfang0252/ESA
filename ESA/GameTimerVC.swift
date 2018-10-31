@@ -10,7 +10,7 @@ import FirebaseDatabase
 import UIKit
 
 class GameTimerViewController: UIViewController {
-    
+
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var gamePlayerTableView: UITableView!
 
@@ -41,10 +41,7 @@ class GameTimerViewController: UIViewController {
                 self.gamePlayerTableView.reloadData()
             }
         })
-        
-        print(teamRoster.count)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,7 +63,6 @@ extension GameTimerViewController: UITableViewDataSource, UITableViewDelegate {
         let players: String
         
         players = teamRoster[indexPath.row]
-            print(players)
         
             timerCell.playerNameLbl.text = players
         

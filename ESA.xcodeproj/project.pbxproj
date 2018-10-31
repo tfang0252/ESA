@@ -83,18 +83,18 @@
 		C9546CCC20F7C934001C9498 /* ESA */ = {
 			isa = PBXGroup;
 			children = (
-				D0A4AD4A2183F5A7007017FF /* RosterVCTableViewCell.swift */,
 				D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */,
+				C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */,
 				C9546CCD20F7C934001C9498 /* AppDelegate.swift */,
+				C9546CD420F7C934001C9498 /* Assets.xcassets */,
+				C9546CD120F7C934001C9498 /* Main.storyboard */,
+				C9546CD920F7C935001C9498 /* Info.plist */,
+				D0A4AD4C2183F659007017FF /* PlayerModel.swift */,
 				C9546CCF20F7C934001C9498 /* LoginVC.swift */,
 				C9EF52412183DD120006D2F8 /* MainMenuVC.swift */,
-				C9546CD120F7C934001C9498 /* Main.storyboard */,
-				D0A4AD4E2186715F007017FF /* GameTimerVC.swift */,
-				D0A4AD4C2183F659007017FF /* PlayerModel.swift */,
-				C9546CD420F7C934001C9498 /* Assets.xcassets */,
-				C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */,
-				C9546CD920F7C935001C9498 /* Info.plist */,
 				D0A4AD44218381ED007017FF /* RosterVC.swift */,
+				D0A4AD4A2183F5A7007017FF /* RosterVCTableViewCell.swift */,
+				D0A4AD4E2186715F007017FF /* GameTimerVC.swift */,
 				D0A4AD50218674DA007017FF /* TimerVCTableViewCell.swift */,
 			);
 			path = ESA;
