@@ -7,13 +7,11 @@
 //
 class PlayerModel {
     
-    var PlayerFirstName: String?
-    var PlayerLastName: String?
+    var PlayerName: String?
     var PlayerNumber: String?
     
-    init(PlayerFirstName:String?, PlayerLastName:String?, PlayerNumber:String?) {
-        self.PlayerFirstName = PlayerFirstName
-        self.PlayerLastName = PlayerLastName
+    init(PlayerName:String?, PlayerNumber:String?) {
+        self.PlayerName = PlayerName
         self.PlayerNumber = PlayerNumber
     }
 }
