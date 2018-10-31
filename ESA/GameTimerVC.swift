@@ -27,6 +27,10 @@ class GameTimerViewController: UIViewController {
     @IBOutlet weak var startBttn: UIButton!
     @IBOutlet weak var resetBttn: UIButton!
     
+    @IBAction func goalBttnPushed(_ sender: Any) {
+        
+    }
+    
     @IBAction func startBttnPushed(_ sender: Any) {
         self.resetBttn.isEnabled = false
         if isTimerRunning == false {
@@ -119,7 +123,6 @@ extension GameTimerViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension GameTimerViewController {
-    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(GameTimerViewController.updateTimer)), userInfo: nil, repeats: true)
         
