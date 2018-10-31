@@ -20,11 +20,12 @@ class RosterViewController: UIViewController {
     //Sets up an array of Player Models
     var playerNames = [PlayerModel]()
     
-    var playerName = ""
+    var playerFirstName = ""
+    var playerLastName = ""
     var playerNumber = ""
     
     //Search Criteria for the search bar
-    var searchCriteria = [String]()
+    var searchCriteria = [PlayerModel]()
     
     //Will change if the user is searching by name
     var searching = false
@@ -43,11 +44,12 @@ class RosterViewController: UIViewController {
                 //for all players in the snapshot set the playerName and playerNumber equal to the right things
                 for players in snapshot.children.allObjects as! [DataSnapshot] {
                     let playerObject = players.value as? [String: AnyObject]
-                    let playerName = playerObject?["PlayerName"]
+                    let playerFirstName = playerObject?["PlayerFirstName"]
+                    let playerLastName = playerObject?["PlayerLastName"]
                     let playerNumber = playerObject?["PlayerNumber"]
                     
                     //Updates the player model with the player name and player number
-                    let player = PlayerModel(PlayerName: playerName as! String?, PlayerNumber: playerNumber as! String?)
+                    let player = PlayerModel(PlayerFirstName: playerFirstName as! String?, PlayerLastName: playerLastName as! String?, PlayerNumber: playerNumber as! String?)
                     
                     self.playerNames.append(player)
                 }
@@ -94,9 +96,9 @@ extension RosterViewController: UITableViewDataSource, UITableViewDelegate {
         
         if searching {
             //NEEDS UPDATED
-            cell.playerNameLbl.text = searchCriteria[indexPath.row]
+            //cell.playerNameLbl.text = searchCriteria[indexPath.row]
         }else {
-            cell.playerNameLbl.text = players.PlayerName
+            cell.playerNameLbl.text = players.PlayerFirstName
             cell.playerNumberLbl.text = players.PlayerNumber
         }
         return cell
@@ -118,6 +120,7 @@ extension RosterViewController: UISearchBarDelegate {
     //Searches the players names as the user types in letters
     //Displays the results after each letter
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
 //        searchCriteria = playerNames.filter({$0.prefix(searchText.count) == searchText})
         
         searching = true
@@ -139,19 +142,20 @@ extension RosterViewController {
         let alertControler = UIAlertController(title: "Add New Player", message: "Enter Player Name and Number", preferredStyle: .alert)
         
         //Adds text fields
-        alertControler.addTextField{(textField) in textField.placeholder = "Enter Player Name"}
+        alertControler.addTextField{(textField) in textField.placeholder = "Enter Player First Name"}
+        alertControler.addTextField{(textField) in textField.placeholder = "Enter Player Last Name"}
         alertControler.addTextField{(textField) in textField.placeholder = "Enter Player Number"}
         
         //When enter is hit, the player name and player number is saved to the database
         let confirmAction = UIAlertAction(title: "Enter", style: .default, handler: { action in
             
-            self.playerName = alertControler.textFields?[0].text ?? "Nothing Entered"
-            
-            self.playerNumber = alertControler.textFields?[1].text ?? "Nothing Entered"
+            self.playerFirstName = alertControler.textFields?[0].text ?? "Nothing Entered"
+            self.playerLastName = alertControler.textFields?[1].text ?? "Nothing Entered"
+            self.playerNumber = alertControler.textFields?[2].text ?? "Nothing Entered"
             
             //If something is entered into the player name box, the database is updated
-            if(self.playerName != "") {
-                let playerInfo = ["PlayerName": self.playerName, "PlayerNumber": self.playerNumber]
+            if(self.playerFirstName != "") {
+                let playerInfo = ["PlayerFirstName": self.playerFirstName,"PlayerLastName": self.playerLastName, "PlayerNumber": self.playerNumber]
                 self.ref.childByAutoId().setValue(playerInfo)
                 
                 self.rosterTableView.reloadData()
