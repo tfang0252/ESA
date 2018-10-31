@@ -9,7 +9,23 @@
 import UIKit
 import FirebaseDatabase
 
-class FormationVC: UIViewController,UIDropInteractionDelegate{
+class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionDelegate{
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        let  touchedPoint = session.location(in: self.view)
+        if let touchedImageView = self.view.hitTest(touchedPoint, with: nil) as? UIImageView{
+            let touchedImage = touchedImageView.image
+            
+            let itemProvider = NSItemProvider(object: touchedImage!)
+            let dragItem = UIDragItem(itemProvider: itemProvider)
+            dragItem.localObject = touchedImageView
+            return [dragItem]
+        }
+        return []
+    }
+    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
+        return UITargetedDragPreview(view: item.localObject as! UIView)
+    }
+    
     
     @IBOutlet weak var FormationCV: UICollectionView!
     
@@ -24,10 +40,11 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addInteraction(UIDropInteraction(delegate: self))
+        view.addInteraction(UIDragInteraction(delegate: self))
         FormationCV.dragInteractionEnabled = true
         ref = Database.database().reference().child("Player")
         
-       
+
         //When a new player is added to the database, it is observed and then the player model is added to the playerNames array
         ref.observe(DataEventType.value, with: {(snapshot) in
             
@@ -53,6 +70,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
       
     }
     
+    
   
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
@@ -75,6 +93,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
             {return}
             DispatchQueue.main.async{
                 let imageView = UIImageView(image: draggedImage)
+                imageView.isUserInteractionEnabled = true
                 self.view.addSubview(imageView)
                 imageView.frame = CGRect(x:0, y: 0, width: 50, height: 50)
                 
@@ -89,8 +108,8 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     func textToImage(drawText: NSString, inImage: UIImage, atPoint:CGPoint)->UIImage{
         
         // Setup the font specific variables
-        var textColor: UIColor = UIColor.white
-        var textFont: UIFont = UIFont(name: "Helvetica Bold", size: 15)!
+        let textColor: UIColor = UIColor.white
+        let textFont: UIFont = UIFont(name: "Helvetica Bold", size: 15)!
         
         //Setup the image context using the passed image.
         UIGraphicsBeginImageContext(inImage.size)
@@ -105,13 +124,13 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
         inImage.draw(in: CGRect(x:0, y:0, width: inImage.size.width, height: inImage.size.height))
         
         // Creating a point within the space that is as bit as the image.
-        var rect: CGRect = CGRect(x:atPoint.x, y:atPoint.y, width:inImage.size.width, height:inImage.size.height)
+        let rect: CGRect = CGRect(x:atPoint.x, y:atPoint.y, width:inImage.size.width, height:inImage.size.height)
         
         //Now Draw the text into an image.
         drawText.draw(in: rect, withAttributes: textFontAttributes)
         
         // Create a new image out of the images we have created
-        var newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         // End the context now that we have the image we need
         UIGraphicsEndImageContext()
@@ -119,6 +138,24 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
         //And pass it back up to the caller.
         return newImage
         
+    }
+    
+    
+    
+    func combineImages(playerImage: UIImage, labelImage: UIImage, cell: FormationCell)->UIImage{
+        let size = CGSize(width: 64, height: 64)
+        UIGraphicsBeginImageContext(size)
+        
+        let playerImageSize = CGRect(x: 8, y: 2, width: 50, height: 50)
+        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
+        playerImage.draw(in: playerImageSize)
+        
+        labelImage.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
+        
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 
 }
@@ -136,8 +173,12 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         let players: PlayerModel
         
         players = playerNames[indexPath.item]
-        
-        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 20))
+        //centers the number
+        if players.PlayerNumber!.count == 2{
+            cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
+        }else{
+            cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
+        }
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
@@ -150,19 +191,7 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         cell.labelImage.image = image
         
         
-        
-        var size = CGSize(width: 64, height: 64)
-        UIGraphicsBeginImageContext(size)
-        
-        let playerImageSize = CGRect(x: 8, y: 2, width: 50, height: 50)
-        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
-        cell.playerImage.image!.draw(in: playerImageSize)
-        
-        cell.labelImage.image!.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
-        
-        var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
+        let newImage = combineImages(playerImage: cell.playerImage.image!,labelImage: cell.labelImage.image!,cell: cell)
        
         cell.labelImage.isHidden = true
         cell.playerImage.isHidden = true
@@ -180,7 +209,11 @@ extension FormationVC: UICollectionViewDragDelegate{
         let players: PlayerModel
         players = playerNames[indexPath.item]
         
-        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 20))
+        if players.PlayerNumber!.count == 2{
+        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
+        }else{
+        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
+        }
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
@@ -193,19 +226,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         cell.labelImage.image = image
         
         
-        
-        var size = CGSize(width: 64, height: 64)
-        UIGraphicsBeginImageContext(size)
-        
-        let playerImageSize = CGRect(x: 8, y: 0, width: 50, height: 50)
-        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
-        cell.playerImage.image!.draw(in: playerImageSize)
-        
-        cell.labelImage.image!.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
-        
-        var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
+        let newImage = combineImages(playerImage: cell.playerImage.image!,labelImage: cell.labelImage.image!,cell: cell)
         
         cell.labelImage.isHidden = true
         cell.playerImage.isHidden = true
