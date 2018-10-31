@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -308,6 +308,9 @@
                                     <constraint firstAttribute="width" constant="108" id="vMj-pg-ZeT"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="saveButton"/>
+                                <connections>
+                                    <segue destination="nvZ-aS-k7f" kind="show" id="m5c-GR-oiG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcm-wd-H5q">
                                 <rect key="frame" x="153" y="563" width="108" height="25"/>
@@ -594,6 +597,139 @@
             </objects>
             <point key="canvasLocation" x="2008.6956521739132" y="25.271739130434785"/>
         </scene>
+        <!--Game Timer View Controller-->
+        <scene sceneID="4Xk-6q-xbk">
+            <objects>
+                <viewController id="nvZ-aS-k7f" customClass="GameTimerViewController" customModule="ESA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9wq-U9-84g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KPM-Of-5Vv">
+                                <rect key="frame" x="0.0" y="222" width="414" height="514"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerTimerCell" id="Wa4-sc-nUg" customClass="TimerVCTableViewCell" customModule="ESA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wa4-sc-nUg" id="9Uf-JW-AHG">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNo-OZ-k1z">
+                                                    <rect key="frame" x="313" y="5.9999999999999982" width="51" height="31.333333333333329"/>
+                                                    <connections>
+                                                        <action selector="playerSubbed:" destination="Wa4-sc-nUg" eventType="valueChanged" id="hdJ-ZK-lAx"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PlayerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc6-9C-bkj">
+                                                    <rect key="frame" x="15" y="11" width="92" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wc6-9C-bkj" firstAttribute="top" secondItem="9Uf-JW-AHG" secondAttribute="topMargin" id="0bc-at-Ovr"/>
+                                                <constraint firstItem="dNo-OZ-k1z" firstAttribute="top" secondItem="9Uf-JW-AHG" secondAttribute="top" constant="6" id="1yB-ZJ-Ep5"/>
+                                                <constraint firstItem="dNo-OZ-k1z" firstAttribute="leading" secondItem="wc6-9C-bkj" secondAttribute="trailing" constant="206" id="7Gz-mI-izz"/>
+                                                <constraint firstItem="wc6-9C-bkj" firstAttribute="leading" secondItem="9Uf-JW-AHG" secondAttribute="leadingMargin" id="FUc-a7-tQN"/>
+                                                <constraint firstAttribute="bottom" secondItem="dNo-OZ-k1z" secondAttribute="bottom" constant="6.5" id="Len-iM-48L"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wc6-9C-bkj" secondAttribute="bottom" constant="1" id="PfE-0R-4ot"/>
+                                                <constraint firstAttribute="trailing" secondItem="dNo-OZ-k1z" secondAttribute="trailing" constant="13" id="hTx-Fq-Ibk"/>
+                                                <constraint firstItem="dNo-OZ-k1z" firstAttribute="leading" secondItem="wc6-9C-bkj" secondAttribute="trailing" constant="206" id="xQC-gh-wsQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerNameLbl" destination="wc6-9C-bkj" id="cw6-lR-bWh"/>
+                                            <outlet property="playerTimeSwitch" destination="dNo-OZ-k1z" id="Lur-OA-OPR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nvZ-aS-k7f" id="yc6-ic-f40"/>
+                                    <outlet property="delegate" destination="nvZ-aS-k7f" id="ALu-Wn-0sI"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBc-Ty-nbb">
+                                <rect key="frame" x="145" y="129" width="124" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="o68-dt-8WL"/>
+                                    <constraint firstAttribute="height" constant="85" id="uJd-Oa-Alr"/>
+                                </constraints>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseBttnPushed:" destination="nvZ-aS-k7f" eventType="touchUpInside" id="8cf-P3-I8a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZV-su-YRf">
+                                <rect key="frame" x="296" y="129" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="3BI-Lm-OA4"/>
+                                    <constraint firstAttribute="width" constant="85" id="k9z-Wo-du9"/>
+                                </constraints>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetBttnPushed:" destination="nvZ-aS-k7f" eventType="touchUpInside" id="gst-Ku-cTk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ky-k6-WvT">
+                                <rect key="frame" x="33" y="129" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="BUK-2K-SCf"/>
+                                    <constraint firstAttribute="width" constant="85" id="YUy-KB-YcX"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startBttnPushed:" destination="nvZ-aS-k7f" eventType="touchUpInside" id="5lw-hR-Pve"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-uH-hqP">
+                                <rect key="frame" x="49" y="38" width="316" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="BhW-cP-nS3"/>
+                                    <constraint firstAttribute="width" constant="277" id="tfF-wF-j4p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="52"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3ky-k6-WvT" firstAttribute="top" secondItem="THS-Wl-8nl" secondAttribute="top" constant="109" id="1pa-95-bJd"/>
+                            <constraint firstItem="fBc-Ty-nbb" firstAttribute="leading" secondItem="3ky-k6-WvT" secondAttribute="trailing" constant="27" id="20q-ff-CzA"/>
+                            <constraint firstItem="fBc-Ty-nbb" firstAttribute="leading" secondItem="THS-Wl-8nl" secondAttribute="leading" constant="145" id="9By-Bc-oWd"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="top" secondItem="dZV-su-YRf" secondAttribute="bottom" constant="8" id="Gz2-zl-MSR"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="top" secondItem="fBc-Ty-nbb" secondAttribute="bottom" constant="8" id="M6x-Nd-RKG"/>
+                            <constraint firstItem="THS-Wl-8nl" firstAttribute="trailing" secondItem="nsP-uH-hqP" secondAttribute="trailing" constant="49" id="Rga-qe-3Hv"/>
+                            <constraint firstItem="dZV-su-YRf" firstAttribute="top" secondItem="THS-Wl-8nl" secondAttribute="top" constant="109" id="VJo-4I-tyH"/>
+                            <constraint firstItem="dZV-su-YRf" firstAttribute="leading" secondItem="fBc-Ty-nbb" secondAttribute="trailing" constant="27" id="VxO-ef-Oz7"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="trailing" secondItem="THS-Wl-8nl" secondAttribute="trailing" id="YwB-Aa-32R"/>
+                            <constraint firstItem="nsP-uH-hqP" firstAttribute="top" secondItem="THS-Wl-8nl" secondAttribute="top" constant="18" id="aQv-BV-5jE"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="top" secondItem="3ky-k6-WvT" secondAttribute="bottom" constant="8" id="bWg-Od-TIM"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="top" secondItem="nsP-uH-hqP" secondAttribute="bottom" constant="84" id="byW-Nk-ao5"/>
+                            <constraint firstItem="3ky-k6-WvT" firstAttribute="leading" secondItem="THS-Wl-8nl" secondAttribute="leading" constant="33" id="jgD-Cd-ps8"/>
+                            <constraint firstItem="THS-Wl-8nl" firstAttribute="trailing" secondItem="dZV-su-YRf" secondAttribute="trailing" constant="33" id="k5f-m3-aFu"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="leading" secondItem="THS-Wl-8nl" secondAttribute="leading" id="kQO-ow-UyV"/>
+                            <constraint firstItem="THS-Wl-8nl" firstAttribute="trailing" secondItem="fBc-Ty-nbb" secondAttribute="trailing" constant="145" id="qbK-Pe-JdX"/>
+                            <constraint firstItem="nsP-uH-hqP" firstAttribute="leading" secondItem="THS-Wl-8nl" secondAttribute="leading" constant="49" id="yZ4-hO-n8d"/>
+                            <constraint firstItem="KPM-Of-5Vv" firstAttribute="bottom" secondItem="THS-Wl-8nl" secondAttribute="bottom" id="zeD-on-Kn8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="THS-Wl-8nl"/>
+                    </view>
+                    <connections>
+                        <outlet property="gamePlayerTableView" destination="KPM-Of-5Vv" id="0v2-Xc-OUP"/>
+                        <outlet property="pauseBttn" destination="fBc-Ty-nbb" id="aQC-DE-9IW"/>
+                        <outlet property="resetBttn" destination="dZV-su-YRf" id="fnm-bw-Z9R"/>
+                        <outlet property="startBttn" destination="3ky-k6-WvT" id="FWT-uk-dn5"/>
+                        <outlet property="timerLbl" destination="nsP-uH-hqP" id="rZl-kf-eRT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gi-fN-z8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2067" y="854"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ESAlogo" width="127.5" height="142.5"/>
@@ -615,7 +751,6 @@
         <image name="undoButton" width="978" height="245"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rwx-VN-dBc"/>
         <segue reference="xl2-64-0bz"/>
     </inferredMetricsTieBreakers>
 </document>

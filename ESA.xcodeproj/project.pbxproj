@@ -15,6 +15,8 @@
 		C9546CD520F7C934001C9498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD420F7C934001C9498 /* Assets.xcassets */; };
 		C9546CD820F7C935001C9498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */; };
 		C9EF52422183DD120006D2F8 /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EF52412183DD120006D2F8 /* MainMenuVC.swift */; };
+		D05C7575218A17A6006B374D /* GameTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05C7573218A17A6006B374D /* GameTimerVC.swift */; };
+		D05C7576218A17A6006B374D /* TimerVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05C7574218A17A6006B374D /* TimerVCTableViewCell.swift */; };
 		D0A4AD45218381ED007017FF /* RosterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD44218381ED007017FF /* RosterVC.swift */; };
 		D0A4AD492183BB9B007017FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */; };
 		D0A4AD4B2183F5A7007017FF /* RosterVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4AD4A2183F5A7007017FF /* RosterVCTableViewCell.swift */; };
@@ -35,6 +37,8 @@
 		C9546CD720F7C935001C9498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9546CD920F7C935001C9498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9EF52412183DD120006D2F8 /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
+		D05C7573218A17A6006B374D /* GameTimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTimerVC.swift; sourceTree = "<group>"; };
+		D05C7574218A17A6006B374D /* TimerVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerVCTableViewCell.swift; sourceTree = "<group>"; };
 		D0A4AD44218381ED007017FF /* RosterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterVC.swift; sourceTree = "<group>"; };
 		D0A4AD482183BB9B007017FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0A4AD4A2183F5A7007017FF /* RosterVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterVCTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				C9546CD620F7C935001C9498 /* LaunchScreen.storyboard */,
 				C9546CD920F7C935001C9498 /* Info.plist */,
 				D0A4AD44218381ED007017FF /* RosterVC.swift */,
+				D05C7573218A17A6006B374D /* GameTimerVC.swift */,
+				D05C7574218A17A6006B374D /* TimerVCTableViewCell.swift */,
 			);
 			path = ESA;
 			sourceTree = "<group>";
@@ -228,9 +234,11 @@
 			files = (
 				D0A4AD4D2183F659007017FF /* PlayerModel.swift in Sources */,
 				D0A4AD45218381ED007017FF /* RosterVC.swift in Sources */,
+				D05C7575218A17A6006B374D /* GameTimerVC.swift in Sources */,
 				D0A4AD4B2183F5A7007017FF /* RosterVCTableViewCell.swift in Sources */,
 				C9546CD020F7C934001C9498 /* LoginVC.swift in Sources */,
 				C91CA9A2218527DA00F94322 /* FormationVC.swift in Sources */,
+				D05C7576218A17A6006B374D /* TimerVCTableViewCell.swift in Sources */,
 				C91CA9A021851DE000F94322 /* FormationCell.swift in Sources */,
 				C9EF52422183DD120006D2F8 /* MainMenuVC.swift in Sources */,
 				C9546CCE20F7C934001C9498 /* AppDelegate.swift in Sources */,
