@@ -10,26 +10,13 @@ import UIKit
 import FirebaseDatabase
 
 class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionDelegate{
-    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-        let  touchedPoint = session.location(in: self.view)
-        if let touchedImageView = self.view.hitTest(touchedPoint, with: nil) as? UIImageView{
-            let touchedImage = touchedImageView.image
-            
-            let itemProvider = NSItemProvider(object: touchedImage!)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            dragItem.localObject = touchedImageView
-            return [dragItem]
-        }
-        return []
-    }
-    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
-        return UITargetedDragPreview(view: item.localObject as! UIView)
-    }
+    
     
     
     @IBOutlet weak var FormationCV: UICollectionView!
     
     
+    @IBOutlet weak var soccerFieldBG: UIImageView!
     var ref: DatabaseReference!
     
     //Sets up an array of Player Models
@@ -40,9 +27,10 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addInteraction(UIDropInteraction(delegate: self))
-        view.addInteraction(UIDragInteraction(delegate: self))
+        self.view.addInteraction(UIDropInteraction(delegate: self))
+        self.view.addInteraction(UIDragInteraction(delegate: self))
         FormationCV.dragInteractionEnabled = true
+        self.view.isUserInteractionEnabled = true
         ref = Database.database().reference().child("Player")
         
 
@@ -72,7 +60,24 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     }
     
     
-  
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        let touchedPoint = session.location(in: self.view)
+        print(touchedPoint)
+        if let touchedImageView = self.view.hitTest(touchedPoint, with: nil) as? UIImageView{
+            let touchedImage = touchedImageView.image
+            print(touchedImage!)
+            let itemProvider = NSItemProvider(object: touchedImage!)
+            let dragItem = UIDragItem(itemProvider: itemProvider)
+            dragItem.localObject = touchedImageView
+            return [dragItem]
+        }
+        return []
+    }
+    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
+        
+        return UITargetedDragPreview(view: item.localObject as! UIView)
+    }
+    
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         // Ensure the drop session has an object of the appropriate type
@@ -97,7 +102,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
                 imageView.isUserInteractionEnabled = true
                 self.view.addSubview(imageView)
                 imageView.frame = CGRect(x:0, y: 0, width: 50, height: 50)
-                
+               
                 let centerPoint = session.location(in: self.view)
                 imageView.center = centerPoint
             }
@@ -193,12 +198,14 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         
         
         let newImage = combineImages(playerImage: cell.playerImage.image!,labelImage: cell.labelImage.image!,cell: cell)
+        
        
         cell.labelImage.isHidden = true
         cell.playerImage.isHidden = true
         cell.playerLabel.removeFromSuperview()
         
         cell.finalImage.image = newImage
+        cell.finalImage.backgroundColor = UIColor.clear
         return cell
     }
 }
@@ -234,6 +241,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         cell.playerLabel.removeFromSuperview()
         
         cell.finalImage.image = newImage
+        
         
         guard let final = cell.finalImage.image else { return [] }
 
