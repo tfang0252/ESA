@@ -34,7 +34,8 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     
     //Sets up an array of Player Models
     var playerNames = [PlayerModel]()
-    var playerName = ""
+    var playerFirstName = ""
+    var playerLastName = ""
     var playerNumber = ""
     
     override func viewDidLoad() {
@@ -54,11 +55,11 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
                 //for all players in the snapshot set the playerName and playerNumber equal to the right things
                 for players in snapshot.children.allObjects as! [DataSnapshot] {
                     let playerObject = players.value as? [String: AnyObject]
-                    let playerName = playerObject?["PlayerName"]
+                    let playerLastName = playerObject?["PlayerLastName"]
                     let playerNumber = playerObject?["PlayerNumber"]
                     
                     //Updates the player model with the player name and player number
-                    let player = PlayerModel(PlayerName: playerName as! String?, PlayerNumber: playerNumber as! String?)
+                    let player = PlayerModel(PlayerFirstName: self.playerFirstName as String?,PlayerLastName: playerLastName as! String?, PlayerNumber: playerNumber as! String?)
                     
                     self.playerNames.append(player)
                 }
@@ -180,7 +181,7 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
             cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
         }
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
-        cell.playerLabel.text = players.PlayerName!
+        cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
         cell.playerLabel.layer.borderWidth = 2.0;
         cell.playerLabel.layer.masksToBounds = true
@@ -215,7 +216,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
         }
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
-        cell.playerLabel.text = players.PlayerName!
+        cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
         cell.playerLabel.layer.borderWidth = 2.0;
         cell.playerLabel.layer.masksToBounds = true
