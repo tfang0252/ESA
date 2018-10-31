@@ -23,7 +23,58 @@ class MainMenuVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height-55
+        
+        let window = UIApplication.shared.keyWindow
+        let topPadding = (window?.safeAreaInsets.top)!+55
+        
+        //let navBar = UINavigationBar(frame: CGRect(x: 0, y: topPadding-55, width: screenWidth, height: 55))
+        
+        let calendarBTN = UIButton(frame: CGRect(x: 0, y: topPadding, width: screenWidth/2, height: screenHeight/3))
+        calendarBTN.backgroundColor = gray1
+        calendarBTN.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        calendarBTN.setImage(UIImage(named: "calendarIcon.png"), for: .normal)
+        
+        let gameBTN = UIButton(frame: CGRect(x: screenWidth/2, y: topPadding, width: screenWidth/2, height: screenHeight/3))
+        gameBTN.backgroundColor = gray2
+        gameBTN.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        gameBTN.setImage(UIImage(named: "gameIcon.png"), for: .normal)
+        
+        
+        let rosterBTN = UIButton(frame: CGRect(x: 0, y: topPadding+screenHeight/3, width: screenWidth/2, height: screenHeight/3))
+        rosterBTN.backgroundColor = gray3
+        rosterBTN.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        rosterBTN.setImage(UIImage(named: "rosterIcon.png"), for: .normal)
+        
+        let statBTN = UIButton(frame: CGRect(x: screenWidth/2, y: topPadding+screenHeight/3, width: screenWidth/2, height: screenHeight/3))
+        statBTN.backgroundColor = gray4
+        statBTN.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        statBTN.setImage(UIImage(named: "statIcon.png"), for: .normal)
+        
+        let photoBTN = UIButton(frame: CGRect(x: 0, y: topPadding+2*screenHeight/3, width: screenWidth/2, height: screenHeight/3))
+        photoBTN.backgroundColor = gray5
+        photoBTN.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        photoBTN.setImage(UIImage(named: "photoIcon.png"), for: .normal)
+        
+        let settingsBTN = UIButton(frame: CGRect(x: screenWidth/2, y: topPadding+2*screenHeight/3, width: screenWidth/2, height: screenHeight/3))
+        settingsBTN.backgroundColor = gray6
+        settingsBTN.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        settingsBTN.setImage(UIImage(named: "settingsIcon.png"), for: .normal)
+        
+        
+        
+        
+        //self.view.addSubview(navBar)
+        self.view.addSubview(calendarBTN)
+        self.view.addSubview(gameBTN)
+        self.view.addSubview(rosterBTN)
+        self.view.addSubview(statBTN)
+        self.view.addSubview(photoBTN)
+        self.view.addSubview(settingsBTN)
     }
+    
     
     
     @objc func buttonAction(sender: UIButton!) {
