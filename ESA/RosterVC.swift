@@ -109,7 +109,7 @@ extension RosterViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    //Deletes cell in the table view if the user swips
+    //Deletes cell in the table view and the database if the user swips to the left
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.playerNames.remove(at: indexPath.row)

@@ -28,7 +28,7 @@ class GameTimerViewController: UIViewController {
     @IBOutlet weak var resetBttn: UIButton!
     
     @IBAction func goalBttnPushed(_ sender: Any) {
-        
+        assistForGoal()
     }
     
     @IBAction func startBttnPushed(_ sender: Any) {
@@ -122,6 +122,7 @@ extension GameTimerViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//Sets up and runs the timer
 extension GameTimerViewController {
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(GameTimerViewController.updateTimer)), userInfo: nil, repeats: true)
@@ -139,5 +140,38 @@ extension GameTimerViewController {
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i", minutes, seconds)
+    }
+}
+
+//Creates the picker view in the alert box once the user selects goal
+extension GameTimerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return teamRoster.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return teamRoster[row]
+    }
+    
+    func assistForGoal() {
+        let alert = UIAlertController(title: "Assist?", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        alert.isModalInPopover = true
+        
+        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        
+        alert.view.addSubview(pickerFrame)
+        pickerFrame.dataSource = self
+        pickerFrame.delegate = self
+       
+        alert.addAction(UIAlertAction(title: "No Goal", style: .default, handler: nil))
+//        alert.addAction(UIAlertAction(title: "No Assist", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
