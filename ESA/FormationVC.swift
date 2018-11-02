@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionDelegate{
+class FormationVC: UIViewController,UIDropInteractionDelegate{
     
     @IBOutlet weak var fieldUIView: UIView!
     
@@ -54,7 +54,6 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fieldUIView.addInteraction(UIDropInteraction(delegate: self))
-        self.view.addInteraction(UIDragInteraction(delegate: self))
         FormationCV.dragInteractionEnabled = true
         self.view.isUserInteractionEnabled = true
         loadDB()
@@ -87,25 +86,6 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
             }
             
         })
-    }
-    
-    
-    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-        let touchedPoint = session.location(in: self.view)
-        print(touchedPoint)
-        if let touchedImageView = self.view.hitTest(touchedPoint, with: nil) as? UIImageView{
-            let touchedImage = touchedImageView.image
-            print(touchedImage!)
-            let itemProvider = NSItemProvider(object: touchedImage!)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            dragItem.localObject = touchedImageView
-            return [dragItem]
-        }
-        return []
-    }
-    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
-        
-        return UITargetedDragPreview(view: item.localObject as! UIView)
     }
     
     
