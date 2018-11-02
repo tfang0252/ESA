@@ -13,6 +13,22 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     
     @IBOutlet weak var fieldUIView: UIView!
     
+    @IBAction func UndoButton(_ sender: Any) {
+        
+        let lastItem = self.fieldUIView.subviews
+        for view in self.fieldUIView.subviews {
+            if(view == lastItem.last){
+            view.removeFromSuperview()
+            }
+        }
+        if namesRemoved.count > 0 {
+            self.playerNames.insert(namesRemoved.last!, at: self.indexOfSelected)
+            namesRemoved.removeLast()
+            self.FormationCV.reloadData()
+        }
+    }
+    
+    
     @IBAction func ClearButton(_ sender: Any) {
         for view in self.fieldUIView.subviews {
             view.removeFromSuperview()
@@ -32,7 +48,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     var playerLastName = ""
     var playerNumber = ""
     var indexOfSelected = 0
-
+    var namesRemoved = [PlayerModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +57,13 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
         FormationCV.dragInteractionEnabled = true
         self.view.isUserInteractionEnabled = true
         loadDB()
+        
       
     }
     
     func loadDB(){
         ref = Database.database().reference().child("Player")
-            
+        
         //When a new player is added to the database, it is observed and then the player model is added to the playerNames array
         ref.observe(DataEventType.value, with: {(snapshot) in
             
@@ -119,8 +136,11 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
                 imageView.center = centerPoint
                 
                 //removes cell from collectionview after being dragged onto field
+                self.namesRemoved.append(self.playerNames[self.indexOfSelected])
                 self.playerNames.remove(at: self.indexOfSelected)
+                
                 self.FormationCV.reloadData()
+                
             }
         })
     

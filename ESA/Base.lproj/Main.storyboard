@@ -300,6 +300,9 @@
                                     <constraint firstAttribute="height" constant="25" id="lZQ-k8-onA"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="undoButton"/>
+                                <connections>
+                                    <action selector="UndoButton:" destination="nel-I5-Zqa" eventType="touchUpInside" id="ZWT-B3-oKS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3X-Ff-qHR">
                                 <rect key="frame" x="286" y="563" width="108" height="25"/>
