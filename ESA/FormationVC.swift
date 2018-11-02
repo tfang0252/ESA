@@ -191,7 +191,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
         UIGraphicsBeginImageContext(size)
         
         let playerImageSize = CGRect(x: 8, y: 2, width: 50, height: 50)
-        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
+        let labelImageSize = CGRect(x: 0, y: 50, width: 64, height: 14)
         playerImage.draw(in: playerImageSize)
         
         labelImage.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
@@ -227,9 +227,9 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
-        cell.playerLabel.layer.borderWidth = 2.0;
+        cell.playerLabel.layer.borderWidth = 1.0;
         cell.playerLabel.layer.masksToBounds = true
-        cell.playerLabel.layer.cornerRadius = 3
+        cell.playerLabel.layer.cornerRadius = 2
         
         
         let image = UIImage.imageWithLabel(cell.playerLabel!)
@@ -264,9 +264,9 @@ extension FormationVC: UICollectionViewDragDelegate{
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
-        cell.playerLabel.layer.borderWidth = 2.0;
+        cell.playerLabel.layer.borderWidth = 1.0;
         cell.playerLabel.layer.masksToBounds = true
-        cell.playerLabel.layer.cornerRadius = 3
+        cell.playerLabel.layer.cornerRadius = 2
         
         
         let image = UIImage.imageWithLabel(cell.playerLabel!)
@@ -275,8 +275,8 @@ extension FormationVC: UICollectionViewDragDelegate{
         
         let newImage = combineImages(playerImage: cell.playerImage.image!,labelImage: cell.labelImage.image!,cell: cell)
         
-        cell.labelImage.removeFromSuperview()
-        cell.playerImage.removeFromSuperview()
+        cell.labelImage.isHidden = true
+        cell.playerImage.isHidden = true
         cell.playerLabel.removeFromSuperview()
         
         cell.finalImage.image = newImage

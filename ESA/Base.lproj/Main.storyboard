@@ -225,11 +225,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="zXq-v1-Nqa"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="formation" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-GY-iJF">
