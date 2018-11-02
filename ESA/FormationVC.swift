@@ -33,6 +33,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
         for view in self.fieldUIView.subviews {
             view.removeFromSuperview()
         }
+        namesRemoved.removeAll()
         loadDB()
     }
     
@@ -281,6 +282,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         cell.finalImage.image = newImage
         
         
+        
         guard let final = cell.finalImage.image else { return [] }
 
         let itemProvider = NSItemProvider(object: final)
@@ -288,7 +290,12 @@ extension FormationVC: UICollectionViewDragDelegate{
         dragPlayer.localObject = final
         return [dragPlayer]
     }
-
+    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
+        let previewParameters = UIDragPreviewParameters()
+        //previewParameters.visiblePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 50, height: 50))
+        previewParameters.backgroundColor = UIColor.clear
+        return previewParameters
+    }
 }
 
 extension UIImage {
