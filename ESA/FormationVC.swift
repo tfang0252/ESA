@@ -11,7 +11,14 @@ import FirebaseDatabase
 
 class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionDelegate{
     
+    @IBOutlet weak var fieldUIView: UIView!
     
+    @IBAction func ClearButton(_ sender: Any) {
+        for view in self.fieldUIView.subviews {
+            view.removeFromSuperview()
+        }
+        loadDB()
+    }
     
     @IBOutlet weak var FormationCV: UICollectionView!
     
@@ -24,16 +31,22 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     var playerFirstName = ""
     var playerLastName = ""
     var playerNumber = ""
+    var indexOfSelected = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addInteraction(UIDropInteraction(delegate: self))
+        self.fieldUIView.addInteraction(UIDropInteraction(delegate: self))
         self.view.addInteraction(UIDragInteraction(delegate: self))
         FormationCV.dragInteractionEnabled = true
         self.view.isUserInteractionEnabled = true
+        loadDB()
+      
+    }
+    
+    func loadDB(){
         ref = Database.database().reference().child("Player")
-        
-
+            
         //When a new player is added to the database, it is observed and then the player model is added to the playerNames array
         ref.observe(DataEventType.value, with: {(snapshot) in
             
@@ -56,7 +69,6 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
             }
             
         })
-      
     }
     
     
@@ -100,16 +112,21 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
             DispatchQueue.main.async{
                 let imageView = UIImageView(image: draggedImage)
                 imageView.isUserInteractionEnabled = true
-                self.view.addSubview(imageView)
+                self.fieldUIView.addSubview(imageView)
                 imageView.frame = CGRect(x:0, y: 0, width: 50, height: 50)
                
                 let centerPoint = session.location(in: self.view)
                 imageView.center = centerPoint
+                
+                //removes cell from collectionview after being dragged onto field
+                self.playerNames.remove(at: self.indexOfSelected)
+                self.FormationCV.reloadData()
             }
         })
     
     }
     }
+    
     
     func textToImage(drawText: NSString, inImage: UIImage, atPoint:CGPoint)->UIImage{
         
@@ -163,6 +180,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
         
         return newImage
     }
+    
 
 }
 
@@ -216,7 +234,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)as! FormationCell
         let players: PlayerModel
         players = playerNames[indexPath.item]
-        
+        indexOfSelected = indexPath.item
         if players.PlayerNumber!.count == 2{
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
         }else{
@@ -236,8 +254,8 @@ extension FormationVC: UICollectionViewDragDelegate{
         
         let newImage = combineImages(playerImage: cell.playerImage.image!,labelImage: cell.labelImage.image!,cell: cell)
         
-        cell.labelImage.isHidden = true
-        cell.playerImage.isHidden = true
+        cell.labelImage.removeFromSuperview()
+        cell.playerImage.removeFromSuperview()
         cell.playerLabel.removeFromSuperview()
         
         cell.finalImage.image = newImage
@@ -250,6 +268,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         dragPlayer.localObject = final
         return [dragPlayer]
     }
+
 }
 
 extension UIImage {
