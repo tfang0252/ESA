@@ -17,7 +17,6 @@ class GameTimerViewController: UIViewController {
     var ref: DatabaseReference!
     var teamRoster = [String]()
     var playerName = ""
-    var isSelected = [String]()
     
     var seconds = 0
     var timer = Timer()

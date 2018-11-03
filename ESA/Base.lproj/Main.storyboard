@@ -311,7 +311,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="saveButton"/>
                                 <connections>
-                                    <segue destination="nvZ-aS-k7f" kind="custom" id="9Xe-LM-7IB"/>
+                                    <segue destination="nvZ-aS-k7f" kind="show" id="m5c-GR-oiG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcm-wd-H5q">
