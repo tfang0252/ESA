@@ -12,6 +12,8 @@ import FirebaseDatabase
 class FormationVC: UIViewController,UIDropInteractionDelegate{
     
     @IBOutlet weak var fieldUIView: UIView!
+    static var startingLineUp = [String]()//["Frederick", "Vertrees", "Santos"]
+    
     
     @IBAction func UndoButton(_ sender: Any) {
         
@@ -50,6 +52,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     var playerNumber = ""
     var indexOfSelected = 0
     var namesRemoved = [PlayerModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +120,9 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
                 imageView.center = centerPoint
                 
                 //removes cell from collectionview after being dragged onto field
-                self.namesRemoved.append(self.playerNames[self.indexOfSelected])
+            self.namesRemoved.append(self.playerNames[self.indexOfSelected])
+            FormationVC.startingLineUp.append((self.namesRemoved.last?.PlayerLastName)!)
+                
                 self.playerNames.remove(at: self.indexOfSelected)
                 
                 self.FormationCV.reloadData()

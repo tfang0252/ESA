@@ -16,8 +16,9 @@ class GameTimerViewController: UIViewController {
 
     var ref: DatabaseReference!
     var teamRoster = [String]()
-    var playerName = ""
-    
+    var playerFirstName = ""
+    var playerLastName = ""
+    var startingPlayers = FormationVC()
     var seconds = 0
     var timer = Timer()
     var isTimerRunning = false
@@ -83,10 +84,10 @@ class GameTimerViewController: UIViewController {
                 //for all players in the snapshot set the playerName and playerNumber equal to the right things
                 for players in snapshot.children.allObjects as! [DataSnapshot] {
                     let playerObject = players.value as? [String: AnyObject]
-                    let playerName = playerObject?["PlayerFirstName"]
+                    let playerFirstName = playerObject?["PlayerFirstName"]
+                    let playerLastName = playerObject?["PlayerLastName"]
                     
-                    
-                    self.teamRoster.append(playerName as! String)
+                    self.teamRoster.append(playerLastName as! String)
                 }
                 
                 self.gamePlayerTableView.reloadData()
@@ -115,9 +116,21 @@ extension GameTimerViewController: UITableViewDataSource, UITableViewDelegate {
         let players: String
         
         players = teamRoster[indexPath.row]
+        print("before for \n")
         
-            timerCell.playerNameLbl.text = players
-        
+        print(FormationVC.startingLineUp)
+        for playerName in  FormationVC.startingLineUp{
+            print(players + "________ ")
+            print(playerName)
+            if playerName == players {
+                timerCell.playerNameLbl.text = players
+                timerCell.playerTimeSwitch.isOn = true
+                break
+            } else {
+                timerCell.playerNameLbl.text = players
+                timerCell.playerTimeSwitch.isOn = false
+            }
+        }
         return timerCell
     }
 }
