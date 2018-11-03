@@ -9,9 +9,33 @@
 import UIKit
 import FirebaseDatabase
 
-class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionDelegate{
+class FormationVC: UIViewController,UIDropInteractionDelegate{
+    
+    @IBOutlet weak var fieldUIView: UIView!
+    
+    @IBAction func UndoButton(_ sender: Any) {
+        
+        let lastItem = self.fieldUIView.subviews
+        for view in self.fieldUIView.subviews {
+            if(view == lastItem.last){
+            view.removeFromSuperview()
+            }
+        }
+        if namesRemoved.count > 0 {
+            self.playerNames.insert(namesRemoved.last!, at: self.indexOfSelected)
+            namesRemoved.removeLast()
+            self.FormationCV.reloadData()
+        }
+    }
     
     
+    @IBAction func ClearButton(_ sender: Any) {
+        for view in self.fieldUIView.subviews {
+            view.removeFromSuperview()
+        }
+        namesRemoved.removeAll()
+        loadDB()
+    }
     
     @IBOutlet weak var FormationCV: UICollectionView!
     
@@ -24,16 +48,22 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
     var playerFirstName = ""
     var playerLastName = ""
     var playerNumber = ""
+    var indexOfSelected = 0
+    var namesRemoved = [PlayerModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addInteraction(UIDropInteraction(delegate: self))
-        self.view.addInteraction(UIDragInteraction(delegate: self))
+        self.fieldUIView.addInteraction(UIDropInteraction(delegate: self))
         FormationCV.dragInteractionEnabled = true
         self.view.isUserInteractionEnabled = true
+        loadDB()
+        
+      
+    }
+    
+    func loadDB(){
         ref = Database.database().reference().child("Player")
         
-
         //When a new player is added to the database, it is observed and then the player model is added to the playerNames array
         ref.observe(DataEventType.value, with: {(snapshot) in
             
@@ -56,26 +86,6 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
             }
             
         })
-      
-    }
-    
-    
-    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
-        let touchedPoint = session.location(in: self.view)
-        print(touchedPoint)
-        if let touchedImageView = self.view.hitTest(touchedPoint, with: nil) as? UIImageView{
-            let touchedImage = touchedImageView.image
-            print(touchedImage!)
-            let itemProvider = NSItemProvider(object: touchedImage!)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            dragItem.localObject = touchedImageView
-            return [dragItem]
-        }
-        return []
-    }
-    func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
-        
-        return UITargetedDragPreview(view: item.localObject as! UIView)
     }
     
     
@@ -100,16 +110,24 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
             DispatchQueue.main.async{
                 let imageView = UIImageView(image: draggedImage)
                 imageView.isUserInteractionEnabled = true
-                self.view.addSubview(imageView)
+                self.fieldUIView.addSubview(imageView)
                 imageView.frame = CGRect(x:0, y: 0, width: 50, height: 50)
                
                 let centerPoint = session.location(in: self.view)
                 imageView.center = centerPoint
+                
+                //removes cell from collectionview after being dragged onto field
+                self.namesRemoved.append(self.playerNames[self.indexOfSelected])
+                self.playerNames.remove(at: self.indexOfSelected)
+                
+                self.FormationCV.reloadData()
+                
             }
         })
     
     }
     }
+    
     
     func textToImage(drawText: NSString, inImage: UIImage, atPoint:CGPoint)->UIImage{
         
@@ -153,7 +171,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
         UIGraphicsBeginImageContext(size)
         
         let playerImageSize = CGRect(x: 8, y: 2, width: 50, height: 50)
-        let labelImageSize = CGRect(x: 0, y: 46, width: 64, height: 14)
+        let labelImageSize = CGRect(x: 0, y: 50, width: 64, height: 14)
         playerImage.draw(in: playerImageSize)
         
         labelImage.draw(in: labelImageSize, blendMode: .normal, alpha: 1)
@@ -163,6 +181,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate,UIDragInteractionD
         
         return newImage
     }
+    
 
 }
 
@@ -188,9 +207,9 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
-        cell.playerLabel.layer.borderWidth = 2.0;
+        cell.playerLabel.layer.borderWidth = 1.0;
         cell.playerLabel.layer.masksToBounds = true
-        cell.playerLabel.layer.cornerRadius = 3
+        cell.playerLabel.layer.cornerRadius = 2
         
         
         let image = UIImage.imageWithLabel(cell.playerLabel!)
@@ -216,7 +235,7 @@ extension FormationVC: UICollectionViewDragDelegate{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)as! FormationCell
         let players: PlayerModel
         players = playerNames[indexPath.item]
-        
+        indexOfSelected = indexPath.item
         if players.PlayerNumber!.count == 2{
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
         }else{
@@ -225,9 +244,9 @@ extension FormationVC: UICollectionViewDragDelegate{
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
         cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
-        cell.playerLabel.layer.borderWidth = 2.0;
+        cell.playerLabel.layer.borderWidth = 1.0;
         cell.playerLabel.layer.masksToBounds = true
-        cell.playerLabel.layer.cornerRadius = 3
+        cell.playerLabel.layer.cornerRadius = 2
         
         
         let image = UIImage.imageWithLabel(cell.playerLabel!)
@@ -243,12 +262,19 @@ extension FormationVC: UICollectionViewDragDelegate{
         cell.finalImage.image = newImage
         
         
+        
         guard let final = cell.finalImage.image else { return [] }
 
         let itemProvider = NSItemProvider(object: final)
         let dragPlayer = UIDragItem(itemProvider: itemProvider)
         dragPlayer.localObject = final
         return [dragPlayer]
+    }
+    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
+        let previewParameters = UIDragPreviewParameters()
+        //previewParameters.visiblePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 50, height: 50))
+        previewParameters.backgroundColor = UIColor.clear
+        return previewParameters
     }
 }
 
