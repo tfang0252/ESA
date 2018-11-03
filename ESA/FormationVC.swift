@@ -23,9 +23,9 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
             view.removeFromSuperview()
             }
         }
-        if namesRemoved.count > 0 {
-            self.playerNames.insert(namesRemoved.last!, at: self.indexOfSelected)
-            namesRemoved.removeLast()
+        if playersRemoved.count > 0 {
+            self.playerNames.insert(playersRemoved.last!, at: self.indexOfSelected)
+            playersRemoved.removeLast()
             self.FormationCV.reloadData()
         }
     }
@@ -35,7 +35,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
         for view in self.fieldUIView.subviews {
             view.removeFromSuperview()
         }
-        namesRemoved.removeAll()
+        playersRemoved.removeAll()
         loadDB()
     }
     
@@ -51,7 +51,8 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     var playerLastName = ""
     var playerNumber = ""
     var indexOfSelected = 0
-    var namesRemoved = [PlayerModel]()
+    var playersRemoved = [PlayerModel]()
+    var namesRemoved = [String]()
     
     
     override func viewDidLoad() {
@@ -60,8 +61,6 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
         FormationCV.dragInteractionEnabled = true
         self.view.isUserInteractionEnabled = true
         loadDB()
-        
-      
     }
     
     func loadDB(){
@@ -120,9 +119,11 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
                 imageView.center = centerPoint
                 
                 //removes cell from collectionview after being dragged onto field
-            self.namesRemoved.append(self.playerNames[self.indexOfSelected])
-            FormationVC.startingLineUp.append((self.namesRemoved.last?.PlayerLastName)!)
+
+            self.playersRemoved.append(self.playerNames[self.indexOfSelected])
+            FormationVC.startingLineUp.append((self.playersRemoved.last!.PlayerLastName)!)
                 
+
                 self.playerNames.remove(at: self.indexOfSelected)
                 
                 self.FormationCV.reloadData()
@@ -133,7 +134,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     }
     }
     
-    
+    //draws on a UIImages
     func textToImage(drawText: NSString, inImage: UIImage, atPoint:CGPoint)->UIImage{
         
         // Setup the font specific variables
@@ -170,7 +171,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     }
     
     
-    
+    //combine 2 UIImages into one (UIlabel images + player name circle)
     func combineImages(playerImage: UIImage, labelImage: UIImage, cell: FormationCell)->UIImage{
         let size = CGSize(width: 64, height: 64)
         UIGraphicsBeginImageContext(size)
@@ -204,9 +205,9 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         
         players = playerNames[indexPath.item]
         //centers the number
-        if players.PlayerNumber!.count == 2{
+        if players.PlayerNumber!.count == 2{    //center player number if 2 digits
             cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
-        }else{
+        }else{                                  //center player number if 1 digit
             cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
         }
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
@@ -241,12 +242,12 @@ extension FormationVC: UICollectionViewDragDelegate{
         let players: PlayerModel
         players = playerNames[indexPath.item]
         indexOfSelected = indexPath.item
-        if players.PlayerNumber!.count == 2{
+        if players.PlayerNumber!.count == 2{        //center player number if 2 digits
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
-        }else{
+        }else{                                      //center player number if 1 digit
         cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
         }
-        //cell.playerButton.setTitle(players.PlayerName, for: .normal)
+        //populates the UILabel
         cell.playerLabel.text = players.PlayerLastName!
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
         cell.playerLabel.layer.borderWidth = 1.0;
@@ -275,15 +276,16 @@ extension FormationVC: UICollectionViewDragDelegate{
         dragPlayer.localObject = final
         return [dragPlayer]
     }
+    //makes background of drag preview clear
     func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
         let previewParameters = UIDragPreviewParameters()
-        //previewParameters.visiblePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 50, height: 50))
         previewParameters.backgroundColor = UIColor.clear
         return previewParameters
     }
 }
 
 extension UIImage {
+    //turns a UILabel into a UIImage
     class func imageWithLabel(_ label: UILabel) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
         defer { UIGraphicsEndImageContext() }
