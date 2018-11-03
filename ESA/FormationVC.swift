@@ -140,8 +140,8 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
         
         //Setups up the font attributes that will be later used to dictate how the text should be drawn
         let textFontAttributes = [
-            NSAttributedStringKey.font: textFont,
-            NSAttributedStringKey.foregroundColor: textColor,
+            NSAttributedString.Key.font: textFont,
+            NSAttributedString.Key.foregroundColor: textColor,
             ]
         
         //Put the image into a rectangle as large as the original image.

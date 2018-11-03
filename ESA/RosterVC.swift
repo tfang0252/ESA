@@ -20,6 +20,9 @@ class RosterViewController: UIViewController {
     //Sets up an array of Player Models
     var playerNames = [PlayerModel]()
     
+    var playerKeys: [String?: String?] = [:]
+    
+    var playerKey = ""
     var playerFirstName = ""
     var playerLastName = ""
     var playerNumber = ""
@@ -47,6 +50,8 @@ class RosterViewController: UIViewController {
                     let playerFirstName = playerObject?["PlayerFirstName"]
                     let playerLastName = playerObject?["PlayerLastName"]
                     let playerNumber = playerObject?["PlayerNumber"]
+                    
+                    self.playerKeys[playerFirstName?.text] = players.key
                     
                     //Updates the player model with the player name and player number
                     let player = PlayerModel(PlayerFirstName: playerFirstName as! String?,PlayerLastName: playerLastName as! String?, PlayerNumber: playerNumber as! String?)
@@ -104,11 +109,17 @@ extension RosterViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    //Deletes cell in the table view if the user swips
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    //Deletes cell in the table view and the database if the user swips to the left
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.playerNames.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let currentCell = rosterTableView.cellForRow(at: indexPath)
+            
+            let deleteKey = playerKeys[currentCell?.textLabel!.text]
+            
+            ref.child(deleteKey!!).removeValue()
         }
         
         rosterTableView.reloadData()
