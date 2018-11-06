@@ -116,12 +116,8 @@ extension GameTimerViewController: UITableViewDataSource, UITableViewDelegate {
         let players: String
         
         players = teamRoster[indexPath.row]
-        print("before for \n")
         
-        print(FormationVC.startingLineUp)
         for playerName in  FormationVC.startingLineUp{
-            print(players + "________ ")
-            print(playerName)
             if playerName == players {
                 timerCell.playerNameLbl.text = players
                 timerCell.playerTimeSwitch.isOn = true

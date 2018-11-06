@@ -55,10 +55,12 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - ZAlertView (1.0.4)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
+  - ZAlertView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -71,6 +73,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - ZAlertView
 
 SPEC CHECKSUMS:
   Firebase: b48f9e653da971ecce5b8c749684bc8bb2d26bd3
@@ -82,7 +85,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ZAlertView: 59fffdb4e37a01df461835566d5101052b8af953
 
-PODFILE CHECKSUM: 27edd45844c202cdfba9a3d1d5d21e82c0c96ff0
+PODFILE CHECKSUM: 6daf2e69c9f7621e7c3079a74a1b6bacbb888492
 
 COCOAPODS: 1.5.2

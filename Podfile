@@ -8,5 +8,6 @@ target 'ESA' do
   # Pods for ESA
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'ZAlertView'
 
 end
