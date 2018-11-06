@@ -44,14 +44,12 @@ extension UIViewController {
 //    }
     
     func addPlayerAlert() {
-        let alertView = ZAlertView(title: "Add New Player", message: "Please Enter Player Name and Number", alertType: .alert)
+        let alertView = ZAlertView(title: "Add New Player", message: "", okButtonText: "Confrim", cancelButtonText: "Cancel")
         
         alertView.addTextField("PlayerFirstName", placeHolder: "Player First Name")
         alertView.addTextField("PlayerLastName", placeHolder: "Players Last Name")
         alertView.addTextField("PlayerNumber", placeHolder: "Players Number")
         
-        
-        
-        self.present(alertView, animated: true, completion: nil)
+        alertView.show()
     }
 }

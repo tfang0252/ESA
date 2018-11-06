@@ -76,7 +76,7 @@ class RosterViewController: UIViewController {
     
     //When the add player buttun is pushed, the Add Player alert box is displayed
     @IBAction func addPlayerClicked(_ sender: UIBarButtonItem) {
-       addPlayerAlert()
+        addPlayerAlert()
     }
     
 }
