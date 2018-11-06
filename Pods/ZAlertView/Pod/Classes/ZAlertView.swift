@@ -50,7 +50,7 @@ import UIKit
     static let TextFieldHeight: CGFloat       = 40
     static let AlertWidth: CGFloat            = 280
     static let AlertHeight: CGFloat           = 65
-    static let BackgroundAlpha: CGFloat       = 0.5
+    static let BackgroundAlpha: CGFloat       = 0.9
     
     // MARK: - Global
     public static var padding: CGFloat               = ZAlertView.Padding
@@ -60,7 +60,7 @@ import UIKit
     public static var buttonSectionExtraGap: CGFloat = ZAlertView.ButtonSectionExtraGap
     public static var textFieldHeight: CGFloat       = ZAlertView.TextFieldHeight
     public static var backgroundAlpha: CGFloat       = ZAlertView.BackgroundAlpha
-    public static var blurredBackground: Bool        = false
+    public static var blurredBackground: Bool        = true
     public static var showAnimation: ShowAnimation   = .fadeIn
     public static var hideAnimation: HideAnimation   = .fadeOut
     public static var duration:CGFloat               = 0.3
@@ -259,7 +259,7 @@ import UIKit
         
         // Setup alert view
         self.alertView                    = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        self.alertView.backgroundColor    = UIColor.white
+        self.alertView.backgroundColor    = UIColor.clear
         self.alertView.layer.cornerRadius = ZAlertView.CornerRadius
         self.view.addSubview(alertView)
         

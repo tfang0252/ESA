@@ -65,28 +65,28 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
     
     func loadDB(){
         ref = Database.database().reference().child("Player")
-        
+
         //When a new player is added to the database, it is observed and then the player model is added to the playerNames array
         ref.observe(DataEventType.value, with: {(snapshot) in
-            
+
             if snapshot.childrenCount > 0{
                 self.playerNames.removeAll()
-                
+
                 //for all players in the snapshot set the playerName and playerNumber equal to the right things
                 for players in snapshot.children.allObjects as! [DataSnapshot] {
                     let playerObject = players.value as? [String: AnyObject]
                     let playerLastName = playerObject?["PlayerLastName"]
                     let playerNumber = playerObject?["PlayerNumber"]
-                    
+
                     //Updates the player model with the player name and player number
-                    let player = PlayerModel(PlayerFirstName: self.playerFirstName as String?,PlayerLastName: playerLastName as! String?, PlayerNumber: playerNumber as! String?)
-                    
+                    let player = PlayerModel(PlayerFirstName: self.playerFirstName , PlayerLastName: playerLastName as! String, PlayerNumber: playerNumber as! String)
+
                     self.playerNames.append(player)
                 }
-                
+
                 self.FormationCV.reloadData()
             }
-            
+
         })
     }
     
@@ -121,7 +121,7 @@ class FormationVC: UIViewController,UIDropInteractionDelegate{
                 //removes cell from collectionview after being dragged onto field
 
             self.playersRemoved.append(self.playerNames[self.indexOfSelected])
-            FormationVC.startingLineUp.append((self.playersRemoved.last!.PlayerLastName)!)
+                FormationVC.startingLineUp.append((self.playersRemoved.last!.PlayerLastName))
                 
 
                 self.playerNames.remove(at: self.indexOfSelected)
@@ -205,13 +205,13 @@ extension FormationVC: UICollectionViewDelegate,UICollectionViewDataSource{
         
         players = playerNames[indexPath.item]
         //centers the number
-        if players.PlayerNumber!.count == 2{    //center player number if 2 digits
-            cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
+        if players.PlayerNumber.count == 2{    //center player number if 2 digits
+            cell.playerImage.image = textToImage(drawText: players.PlayerNumber as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
         }else{                                  //center player number if 1 digit
-            cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
+            cell.playerImage.image = textToImage(drawText: players.PlayerNumber as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
         }
         //cell.playerButton.setTitle(players.PlayerName, for: .normal)
-        cell.playerLabel.text = players.PlayerLastName!
+        cell.playerLabel.text = players.PlayerLastName
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
         cell.playerLabel.layer.borderWidth = 1.0;
         cell.playerLabel.layer.masksToBounds = true
@@ -242,13 +242,13 @@ extension FormationVC: UICollectionViewDragDelegate{
         let players: PlayerModel
         players = playerNames[indexPath.item]
         indexOfSelected = indexPath.item
-        if players.PlayerNumber!.count == 2{        //center player number if 2 digits
-        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
+        if players.PlayerNumber.count == 2{        //center player number if 2 digits
+            cell.playerImage.image = textToImage(drawText: players.PlayerNumber as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 17, y: 15))
         }else{                                      //center player number if 1 digit
-        cell.playerImage.image = textToImage(drawText: players.PlayerNumber! as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
+            cell.playerImage.image = textToImage(drawText: players.PlayerNumber as NSString, inImage: UIImage(named: "formation.png")!, atPoint: CGPoint(x: 20, y: 15))
         }
         //populates the UILabel
-        cell.playerLabel.text = players.PlayerLastName!
+        cell.playerLabel.text = players.PlayerLastName
         cell.playerLabel.layer.borderColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0).cgColor
         cell.playerLabel.layer.borderWidth = 1.0;
         cell.playerLabel.layer.masksToBounds = true
